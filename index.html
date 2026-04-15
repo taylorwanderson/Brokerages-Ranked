@@ -3,73 +3,47 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
-<title>Brokerage Power Rankings 2026 — Inman</title>
-<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=DM+Sans:ital,wght@0,300;0,400;0,500;1,400&display=swap" rel="stylesheet">
+<title>Enterprise Power Rankings 2026 — Inman</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
 <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.js"></script>
 <style>
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
 :root{
   --red:#CC1F1F;--black:#0f0f0f;--white:#fff;
-  --g1:#f5f4f1;--g2:#e6e4de;--g3:#ccc9c0;--g4:#999;--g6:#555;
-  --blue:#185FA5;--blue-lt:#E6F1FB;--blue-dk:#0C447C;
-  --green:#1a6b3a;--green-lt:#EAF3DE;--green-dk:#085041;
+  --g1:#f5f4f1;--g2:#e6e4de;--g3:#c8c5bc;--g4:#999;--g5:#777;--g6:#555;
   --Fd:'Playfair Display',Georgia,serif;
   --Fb:'DM Sans',system-ui,sans-serif;
 }
-body{font-family:var(--Fb);background:var(--g1);color:var(--black);font-size:14px;line-height:1.6}
+body{font-family:var(--Fb);background:var(--g1);color:var(--black);line-height:1.5}
 
-.nav{background:var(--black);height:52px;display:flex;align-items:center;justify-content:space-between;padding:0 28px;position:sticky;top:0;z-index:100}
-.logo{display:flex;align-items:center;gap:10px;text-decoration:none}
-.logo-box{background:var(--red);color:#fff;font-family:var(--Fd);font-weight:700;font-size:16px;width:30px;height:30px;display:flex;align-items:center;justify-content:center;flex-shrink:0}
-.logo-name{font-family:var(--Fd);font-size:17px;font-weight:600;color:#fff}
-.logo-sec{font-size:11px;color:#555;letter-spacing:1.5px;text-transform:uppercase;margin-left:2px}
-.nav-pill{background:var(--red);color:#fff;font-size:10px;font-weight:500;padding:3px 9px;letter-spacing:.8px;text-transform:uppercase}
+/* MAIN */
+.wrap{max-width:1020px;margin:0 auto;padding:16px 20px 40px}
 
-.hero{background:var(--black);padding:36px 28px 28px;border-bottom:3px solid var(--red)}
-.hero-inner{max-width:1000px;margin:0 auto}
-.eyebrow{font-size:10px;font-weight:500;letter-spacing:2.5px;text-transform:uppercase;color:var(--red);margin-bottom:10px}
-.hero h1{font-family:var(--Fd);font-size:clamp(24px,4vw,40px);font-weight:700;color:#fff;line-height:1.1;margin-bottom:12px;max-width:700px}
-.hero-sub{font-size:14px;color:#aaa;line-height:1.75;max-width:660px;margin-bottom:20px}
-.hero-meta{display:flex;flex-wrap:wrap;gap:16px;font-size:11px;color:#555;border-top:1px solid #1a1a1a;padding-top:14px}
-.sbadge{background:#1a1a1a;color:#888;font-size:10px;padding:2px 7px;letter-spacing:.5px;margin-right:3px}
-
-.merger-strip{background:#1a1a1a;border-left:3px solid var(--red);padding:14px 20px}
-.merger-inner{max-width:1000px;margin:0 auto}
-.merger-strip h3{font-family:var(--Fd);font-size:14px;font-weight:600;color:#fff;margin-bottom:6px}
-.merger-strip p{font-size:12px;color:#888;line-height:1.7}
-.merger-strip strong{color:#ccc;font-weight:500}
-.mstats{display:flex;gap:28px;margin-top:12px;flex-wrap:wrap}
-.mstat .v{font-family:var(--Fd);font-size:22px;color:#fff;font-weight:600;line-height:1}
-.mstat .l{font-size:11px;color:#555;margin-top:3px}
-
-.wrap{max-width:1000px;margin:0 auto;padding:20px 28px 60px}
-
-.controls{background:var(--white);border:1px solid var(--g2);padding:12px 14px;margin-bottom:14px;display:flex;flex-wrap:wrap;gap:12px;align-items:flex-end}
-.cl{font-size:10px;font-weight:500;letter-spacing:1.5px;text-transform:uppercase;color:var(--g4);display:block;margin-bottom:4px}
+/* CONTROLS */
+.controls{background:var(--white);border:1px solid var(--g2);padding:13px 16px;margin-bottom:16px;display:flex;flex-wrap:wrap;gap:14px;align-items:flex-end}
+.cg{display:flex;flex-direction:column;gap:4px}
+.cl{font-size:10px;font-weight:500;letter-spacing:1.5px;text-transform:uppercase;color:var(--g4)}
 .seg{display:flex;border:1px solid var(--g2);overflow:hidden}
-.seg button{font-family:var(--Fb);font-size:12px;font-weight:500;padding:5px 13px;border:none;border-right:1px solid var(--g2);background:transparent;color:var(--g4);cursor:pointer;transition:all .15s;white-space:nowrap}
+.seg button{font-family:var(--Fb);font-size:12px;font-weight:500;padding:5px 14px;border:none;border-right:1px solid var(--g2);background:transparent;color:var(--g4);cursor:pointer;transition:all .15s;white-space:nowrap}
 .seg button:last-child{border-right:none}
 .seg button.on{background:var(--black);color:#fff}
-.merger-toggle{margin-left:auto;display:flex;align-items:flex-end}
-.tbtn{display:flex;align-items:center;gap:8px;background:transparent;border:1px solid var(--g2);padding:5px 12px;cursor:pointer;font-family:var(--Fb);font-size:12px;font-weight:500;color:var(--g6);transition:all .15s}
+.tbtn{display:flex;align-items:center;gap:8px;background:transparent;border:1px solid var(--g2);padding:5px 13px;cursor:pointer;font-family:var(--Fb);font-size:12px;font-weight:500;color:var(--g5);transition:all .15s;white-space:nowrap}
 .tbtn.on{border-color:var(--red);color:var(--red);background:#fff5f5}
 .tdot{width:8px;height:8px;border-radius:50%;background:var(--g3);transition:background .2s;flex-shrink:0}
 .tbtn.on .tdot{background:var(--red)}
 
-.leg-row{display:flex;gap:18px;flex-wrap:wrap;margin-bottom:12px;align-items:center}
-.li{display:flex;align-items:center;gap:6px;font-size:11px;color:var(--g6)}
-.lsq{width:10px;height:10px;flex-shrink:0;border-radius:1px}
-.leg-note{font-size:10px;color:var(--g4);font-style:italic;margin-left:2px}
-
-.vtabs{display:flex;border-bottom:2px solid var(--g2);margin-bottom:14px}
+/* TABS */
+.vtabs{display:flex;border-bottom:2px solid var(--g2);margin-bottom:16px}
 .vtab{background:transparent;border:none;font-family:var(--Fb);font-size:12px;font-weight:500;color:var(--g4);padding:8px 16px;cursor:pointer;border-bottom:2px solid transparent;margin-bottom:-2px;transition:all .15s}
 .vtab.on{color:var(--black);border-bottom-color:var(--black)}
 
+/* PANEL */
 .panel{background:var(--white);border:1px solid var(--g2)}
-.ph{display:flex;justify-content:space-between;align-items:baseline;padding:12px 14px 10px;border-bottom:1px solid var(--g2);flex-wrap:wrap;gap:6px}
+.ph{display:flex;justify-content:space-between;align-items:baseline;padding:13px 16px 11px;border-bottom:1px solid var(--g2);flex-wrap:wrap;gap:6px}
 .pt{font-size:13px;font-weight:500}
 .pn{font-size:11px;color:var(--g4)}
 
+/* TABLE */
 .tw{overflow-x:auto}
 table{width:100%;border-collapse:collapse;font-size:12px}
 thead{background:var(--g1)}
@@ -81,474 +55,548 @@ th.srt .arr{opacity:1}
 td{padding:8px 10px;border-bottom:1px solid var(--g2);vertical-align:middle}
 tr:last-child td{border-bottom:none}
 tbody tr:hover td{background:var(--g1)}
-.rn{font-size:11px;color:var(--g4);text-align:right;width:24px}
-.nc{display:flex;align-items:center;gap:7px;flex-wrap:wrap}
+.rn{font-size:11px;color:var(--g4);text-align:right;width:28px;padding-right:6px}
+.nc{display:flex;align-items:center;gap:8px}
 .dot{width:9px;height:9px;border-radius:50%;flex-shrink:0}
-.bn{font-weight:500}
-.chip{font-size:9px;padding:2px 6px;font-weight:500;margin-left:4px;vertical-align:middle;white-space:nowrap}
-.cb{background:var(--blue-lt);color:var(--blue-dk)}
-.cf{background:var(--green-lt);color:var(--green-dk)}
-.cm{background:#fff0f0;color:#7a1515}
-.bw{display:flex;align-items:center;gap:5px;min-width:90px}
+.co{font-size:11px;color:var(--g4);margin-top:1px}
+.bw{display:flex;align-items:center;gap:6px;min-width:100px}
 .bt{flex:1;height:4px;background:var(--g2);overflow:hidden}
 .bf{height:100%}
-.nm{white-space:nowrap}
-.gp{color:var(--green);font-weight:500}
-.gn{color:#a01717;font-weight:500}
-.ga{color:var(--g4)}
+.nm{white-space:nowrap;font-size:12px}
+.yp{color:#1a6b3a;font-weight:500;font-size:11px;white-space:nowrap}
+.yn{color:#a01717;font-weight:500;font-size:11px;white-space:nowrap}
+.ya{color:var(--g4);font-size:11px}
+.est{font-size:9px;color:var(--g4);vertical-align:super;margin-left:2px}
 .tip{display:inline-flex;align-items:center;justify-content:center;width:13px;height:13px;border-radius:50%;border:1px solid var(--g2);font-size:9px;color:var(--g4);cursor:help;margin-left:3px;flex-shrink:0}
 .tip:hover{background:var(--g2)}
-.mr td{background:#fff8f8}
-.mr .bn{color:#9b1d1d}
 
+/* YOY BANNER */
 .yoy-banner{background:var(--black);padding:16px 20px;margin-bottom:14px;border-left:3px solid var(--red)}
-.yoy-hl{font-family:var(--Fd);font-size:17px;color:#fff;font-weight:600;margin-bottom:8px}
-.yoy-bl{display:flex;flex-wrap:wrap;gap:14px}
-.yoy-b{font-size:12px;color:#888;display:flex;align-items:flex-start;gap:6px;max-width:340px}
-.yoy-b::before{content:'◆';font-size:8px;color:var(--red);margin-top:4px;flex-shrink:0}
-.yoy-b strong{color:#ccc;font-weight:500}
-.movers{display:grid;grid-template-columns:repeat(auto-fit,minmax(190px,1fr));gap:12px;margin-bottom:14px}
+.yoy-hl{font-family:var(--Fd);font-size:18px;color:#fff;font-weight:600;margin-bottom:8px;line-height:1.2}
+.yoy-bullets{display:flex;flex-wrap:wrap;gap:14px;margin-top:4px}
+.yb{font-size:12px;color:#777;display:flex;align-items:flex-start;gap:6px;max-width:360px}
+.yb::before{content:'◆';font-size:8px;color:var(--red);margin-top:4px;flex-shrink:0}
+.yb strong{color:#bbb;font-weight:500}
+
+/* MOVERS GRID */
+.movers{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:12px;margin-bottom:16px}
 .mc{background:var(--white);border:1px solid var(--g2);padding:14px}
 .mc h4{font-size:10px;font-weight:500;letter-spacing:1.2px;text-transform:uppercase;color:var(--g4);margin-bottom:10px}
-.mr2{display:flex;justify-content:space-between;align-items:baseline;padding:5px 0;border-bottom:1px solid var(--g1);font-size:12px}
-.mr2:last-child{border-bottom:none}
-.mn{font-weight:500}
-.mv-p{color:var(--green);font-weight:500}
+.mr{display:flex;justify-content:space-between;align-items:baseline;padding:5px 0;border-bottom:1px solid var(--g1);font-size:12px}
+.mr:last-child{border-bottom:none}
+.mn{font-weight:500;font-size:12px}
+.mv-p{color:#1a6b3a;font-weight:500}
 .mv-n{color:#a01717;font-weight:500}
 
-.fn{font-size:11px;color:var(--g4);line-height:1.75;padding:12px 14px;background:var(--white);border:1px solid var(--g2);border-top:none}
+/* INLINE FOOTNOTE (below chart/table panels) */
+.fn{font-size:11px;color:var(--g5);line-height:1.8;padding:12px 16px;background:var(--white);border:1px solid var(--g2);border-top:none}
 .fn strong{color:var(--g6);font-weight:500}
-.fn a{color:var(--g4);text-decoration:underline}
-.fn .src-note{display:inline-block;background:var(--g1);border:1px solid var(--g2);font-size:10px;padding:1px 6px;margin:0 2px;vertical-align:middle}
+.fn a{color:var(--g5);text-decoration:underline}
+.fn sup{font-size:9px;vertical-align:super}
+
+/* METHODOLOGY BLOCK */
+.meth{background:var(--white);border:1px solid var(--g2);margin-top:20px;padding:20px}
+.meth h3{font-family:var(--Fd);font-size:15px;font-weight:600;color:var(--black);margin-bottom:14px;padding-bottom:10px;border-bottom:2px solid var(--g2)}
+.meth-section{margin-bottom:14px}
+.meth-section:last-child{margin-bottom:0}
+.meth-section h4{font-size:11px;font-weight:500;letter-spacing:.8px;text-transform:uppercase;color:var(--g5);margin-bottom:5px}
+.meth-section p{font-size:12px;color:var(--g6);line-height:1.8}
+.meth-section a{color:var(--g5);text-decoration:underline}
+.meth-section a:hover{color:var(--black)}
 
 @media(max-width:640px){
-  .hero,.wrap{padding-left:16px;padding-right:16px}
-  .merger-strip{padding-left:16px;padding-right:16px}
+  .wrap{padding-left:12px;padding-right:12px}
   .controls{flex-direction:column;align-items:flex-start}
-  .merger-toggle{margin-left:0}
+  .movers{grid-template-columns:1fr}
 }
 </style>
 </head>
 <body>
 
-<nav class="nav">
-  <a class="logo" href="https://inman.com" target="_blank">
-    <div class="logo-box">I</div>
-    <span class="logo-name">Inman</span>
-    <span class="logo-sec">/ Data</span>
-  </a>
-  <span class="nav-pill">2026 data live</span>
-</nav>
-
-<section class="hero">
-  <div class="hero-inner">
-    <div class="eyebrow">2025 Production — Published April 2026</div>
-    <h1>Who dominates residential real estate in 2025</h1>
-    <p class="hero-sub">An interactive comparison of the nation's largest brokerages and franchise networks — by sales volume, transaction sides, agent count, and implied average price. Includes the seismic Compass–Anywhere merger that closed January 9, 2026.</p>
-    <div class="hero-meta">
-      <span><span class="sbadge">RealTrends Verified 2026</span> Single brokerage profiles</span>
-      <span><span class="sbadge">T3 Sixty 2026</span> Franchise network totals</span>
-      <span><span class="sbadge">SEC / press releases</span> Agent counts where noted</span>
-      <span>All data used with permission · properly attributed per row</span>
-    </div>
-  </div>
-</section>
-
-<div class="merger-strip">
-  <div class="merger-inner">
-    <h3>◆ Compass acquires Anywhere Real Estate — January 9, 2026</h3>
-    <p>Creates <strong>Compass International Holdings</strong> with ~490,000 combined 2025 transaction sides and $455B in combined 2025 production. Use the merger toggle to see the post-merger view.</p>
-    <div class="mstats">
-      <div class="mstat"><div class="v">$455B</div><div class="l">combined 2025 volume</div></div>
-      <div class="mstat"><div class="v">490K+</div><div class="l">combined 2025 sides</div></div>
-      <div class="mstat"><div class="v">~86K</div><div class="l">combined agents</div></div>
-    </div>
-  </div>
-</div>
-
 <div class="wrap">
 
-<div class="controls">
-  <div><span class="cl">View</span>
-    <div class="seg" id="vSeg">
-      <button class="on" onclick="setView('chart')">Chart</button>
-      <button onclick="setView('table')">Table</button>
-      <button onclick="setView('yoy')">Year over year</button>
+  <div class="controls">
+    <div class="cg">
+      <span class="cl">View</span>
+      <div class="seg" id="vSeg">
+        <button class="on" onclick="setView('chart')">Chart</button>
+        <button onclick="setView('table')">Table</button>
+        <button onclick="setView('yoy')">Year over year</button>
+      </div>
+    </div>
+    <div class="cg">
+      <span class="cl">Metric</span>
+      <div class="seg" id="mSeg">
+        <button class="on" onclick="setMetric('volume')">Volume</button>
+        <button onclick="setMetric('sides')">Sides</button>
+        <button onclick="setMetric('agents')">Agents</button>
+        <button onclick="setMetric('avgPrice')">Avg price</button>
+      </div>
+    </div>
+    <div class="cg">
+      <span class="cl">Sort</span>
+      <div class="seg" id="sSeg">
+        <button class="on" onclick="setSort('metric')">By metric</button>
+        <button onclick="setSort('yoy')">By YoY change</button>
+        <button onclick="setSort('name')">A–Z</button>
+      </div>
+    </div>
+    <div class="cg" style="margin-left:auto">
+      <span class="cl">Pro-forma view</span>
+      <button class="tbtn" id="mergeBtn" onclick="toggleMerger()">
+        <span class="tdot"></span>Compass + Anywhere combined
+      </button>
     </div>
   </div>
-  <div><span class="cl">Metric</span>
-    <div class="seg" id="mSeg">
-      <button class="on" onclick="setMetric('volume')">Volume</button>
-      <button onclick="setMetric('sides')">Sides</button>
-      <button onclick="setMetric('avgPrice')">Avg price</button>
-      <button onclick="setMetric('agents')">Agents</button>
-    </div>
-  </div>
-  <div><span class="cl">Filter</span>
-    <div class="seg" id="fSeg">
-      <button class="on" onclick="setFilter('all')">All</button>
-      <button onclick="setFilter('franchise')">Franchise networks</button>
-      <button onclick="setFilter('brokerage')">Brokerages</button>
-    </div>
-  </div>
-  <div class="merger-toggle">
-    <button class="tbtn" id="mergeBtn" onclick="toggleMerger()">
-      <span class="tdot"></span>Compass + Anywhere merger
-    </button>
-  </div>
-</div>
 
-<div class="leg-row">
-  <span class="li"><span class="lsq" style="background:var(--blue)"></span>Single brokerage<span class="leg-note">RealTrends Verified 2026</span></span>
-  <span class="li"><span class="lsq" style="background:var(--green)"></span>Franchise network<span class="leg-note">T3 Sixty / SEC / press releases</span></span>
-  <span class="li"><span class="lsq" style="background:#9b1d1d"></span>Post-merger combined<span class="leg-note">merger toggle</span></span>
-</div>
+  <div class="vtabs">
+    <button class="vtab on" id="vt-chart" onclick="setView('chart')">Chart</button>
+    <button class="vtab" id="vt-table" onclick="setView('table')">Table</button>
+    <button class="vtab" id="vt-yoy" onclick="setView('yoy')">Year over year</button>
+  </div>
 
-<div class="vtabs">
-  <button class="vtab on" id="vt-chart" onclick="setView('chart')">Chart</button>
-  <button class="vtab" id="vt-table" onclick="setView('table')">Table</button>
-  <button class="vtab" id="vt-yoy" onclick="setView('yoy')">Year over year</button>
-</div>
+  <!-- CHART -->
+  <div id="pChart">
+    <div class="panel">
+      <div class="ph">
+        <span class="pt" id="cTitle">Sales volume — 2025 enterprise production</span>
+        <span class="pn" id="cNote">T3 Sixty 2026 Real Estate Almanac · Enterprise 20</span>
+      </div>
+      <div style="padding:12px 16px 10px;position:relative" id="cWrap"><canvas id="mainC"></canvas></div>
+    </div>
+    <div class="fn" id="cFoot"></div>
+  </div>
 
-<!-- CHART -->
-<div id="pChart">
-  <div class="panel">
-    <div class="ph">
-      <span class="pt" id="cTitle">Sales volume — 2025 production</span>
-      <span class="pn" id="cNote"></span>
+  <!-- TABLE -->
+  <div id="pTable" style="display:none">
+    <div class="panel">
+      <div class="ph">
+        <span class="pt">Full Enterprise 20 — click any header to sort</span>
+        <span class="pn">T3 Sixty 2026 Real Estate Almanac · 2025 production</span>
+      </div>
+      <div class="tw">
+        <table>
+          <thead><tr>
+            <th style="width:28px">#</th>
+            <th onclick="sb('name')" id="th-name">Enterprise <span class="arr">↕</span></th>
+            <th onclick="sb('volume')" id="th-volume" class="srt">Volume <span class="arr">↓</span></th>
+            <th onclick="sb('volYoy')" id="th-volYoy">Vol YoY <span class="arr">↕</span></th>
+            <th onclick="sb('sides')" id="th-sides">Sides <span class="arr">↕</span></th>
+            <th onclick="sb('sidesYoy')" id="th-sidesYoy">Sides YoY <span class="arr">↕</span></th>
+            <th onclick="sb('agents')" id="th-agents">Agents <span class="arr">↕</span></th>
+            <th onclick="sb('agentsYoy')" id="th-agentsYoy">Agents YoY <span class="arr">↕</span></th>
+            <th onclick="sb('avgPrice')" id="th-avgPrice">Avg price <span class="arr">↕</span></th>
+          </tr></thead>
+          <tbody id="tbody"></tbody>
+        </table>
+      </div>
     </div>
-    <div style="padding:12px 14px 10px;position:relative" id="cWrap"><canvas id="mainC"></canvas></div>
+    <div class="fn">
+      <strong>Source:</strong> <a href="https://www.realestatealmanac.com/enterprises" target="_blank">T3 Sixty 2026 Real Estate Almanac · Enterprise 20</a> (April 8, 2026). Used with permission. Volume in millions USD. <sup>*</sup> Company provided partial data; T3 Sixty supplemented with additional research — estimates may differ from actual. <sup>**</sup> Compass 2025 totals include Christie's International Real Estate owned operations; CIRE independent affiliates only — prior-year comparison not directly equivalent. <strong>Implied avg price</strong> = Volume ÷ Sides (value represented per side). Confirmed against RealTrends Verified reported avg home prices. Derived estimate, not audited.
+    </div>
   </div>
-  <div class="fn" id="cFoot"></div>
-</div>
 
-<!-- TABLE -->
-<div id="pTable" style="display:none">
-  <div class="panel">
-    <div class="ph">
-      <span class="pt">Full rankings — click headers to sort</span>
-      <span class="pn">2025 production</span>
+  <!-- YOY -->
+  <div id="pYoy" style="display:none">
+    <div class="yoy-banner">
+      <div class="yoy-hl" id="yHL"></div>
+      <div class="yoy-bullets" id="yBL"></div>
     </div>
-    <div class="tw">
-      <table>
-        <thead><tr>
-          <th style="width:24px">#</th>
-          <th onclick="sb('name')" id="th-name">Name <span class="arr">↕</span></th>
-          <th onclick="sb('type')" id="th-type">Type <span class="arr">↕</span></th>
-          <th onclick="sb('volume')" id="th-volume" class="srt">Volume <span class="arr">↓</span></th>
-          <th onclick="sb('sides')" id="th-sides">Sides <span class="arr">↕</span></th>
-          <th onclick="sb('avgPrice')" id="th-avgPrice">Avg price <span class="arr">↕</span></th>
-          <th onclick="sb('agents')" id="th-agents">Agents <span class="arr">↕</span></th>
-          <th onclick="sb('yoy')" id="th-yoy">YoY vol <span class="arr">↕</span></th>
-        </tr></thead>
-        <tbody id="tbody"></tbody>
-      </table>
+    <div class="movers" id="movers"></div>
+    <div class="panel">
+      <div class="ph">
+        <span class="pt" id="yChartTitle">Year-over-year volume change — 2025 vs 2024</span>
+        <span class="pn">T3 Sixty 2026 Real Estate Almanac</span>
+      </div>
+      <div style="position:relative;padding:12px 16px 10px" id="yWrap"><canvas id="yoyC"></canvas></div>
+    </div>
+    <div class="fn">
+      <strong>Year-over-year:</strong> 2025 vs 2024 production as reported in the T3 Sixty 2026 Real Estate Almanac (April 8, 2026). Used with permission. <sup>**</sup> Compass YoY comparison not directly equivalent due to Christie's International Real Estate methodology change.
     </div>
   </div>
-  <div class="fn" id="tFoot"></div>
-</div>
 
-<!-- YOY -->
-<div id="pYoy" style="display:none">
-  <div class="yoy-banner">
-    <div class="yoy-hl" id="yHL"></div>
-    <div class="yoy-bl" id="yBL"></div>
-  </div>
-  <div class="movers" id="movers"></div>
-  <div class="panel">
-    <div class="ph">
-      <span class="pt">Year-over-year volume change</span>
-      <span class="pn">2025 vs 2024 production</span>
+  <div class="meth">
+    <h3>Methodology &amp; Sources</h3>
+
+    <div class="meth-section">
+      <h4>Primary Source</h4>
+      <p>All enterprise data is drawn from the <a href="https://www.realestatealmanac.com/enterprises" target="_blank">T3 Sixty 2026 Real Estate Almanac · Enterprise 20</a>, published April 8, 2026, and used with permission of T3 Sixty. Figures reflect 2025 full-year production. Direct table sources: <a href="https://www.realestatealmanac.com/enterprises/by-sales-volume" target="_blank">by sales volume</a> and <a href="https://www.realestatealmanac.com/enterprises/by-transaction-sides" target="_blank">by transaction sides</a>. T3 Sixty methodology is documented at <a href="https://www.realestatealmanac.com/methodology" target="_blank">realestatealmanac.com/methodology</a>.</p>
     </div>
-    <div style="position:relative;padding:12px 14px 10px" id="yWrap"><canvas id="yoyC"></canvas></div>
+
+    <div class="meth-section">
+      <h4>What is an enterprise?</h4>
+      <p>T3 Sixty defines an enterprise as a holding company or franchisor that owns a controlling stake (greater than 50%) in one or more brokerage brands. Enterprise figures combine both owned brokerage production and franchised affiliate production under one corporate umbrella. This means enterprise totals are larger than standalone brokerage figures — for example, Anywhere Real Estate's $557.6B includes its owned Anywhere Advisors brokerage plus all Coldwell Banker, Sotheby's International Realty, Century 21, ERA, Better Homes &amp; Gardens Real Estate, and Corcoran franchise affiliate production.</p>
+    </div>
+
+    <div class="meth-section">
+      <h4>Sales volume and transaction sides</h4>
+      <p>T3 Sixty counts the value or number of homes a company represented on either the buy or sell side. If a company represents both sides of the same transaction, it counts as two sides. A nominal amount of commercial activity may be included without materially affecting rankings. All agent counts are U.S.-based figures as reported by T3 Sixty.</p>
+    </div>
+
+    <div class="meth-section">
+      <h4>Implied average price</h4>
+      <p>Derived as Volume ÷ Sides. Because both T3 Sixty and RealTrends count each representation separately — a dual-represented sale equals two sides — dividing volume by sides yields the average value per side, which closely tracks average home price. This is a derived estimate confirmed against <a href="https://www.realtrends.com/ranking/best-real-estate-agents-united-states/brokerages-by-volume/" target="_blank">RealTrends Verified</a> reported average home price fields (e.g., Compass: $262.23B ÷ 245,173 sides = $1.07M, an exact match). Not an audited statistic.</p>
+    </div>
+
+    <div class="meth-section">
+      <h4>Footnotes</h4>
+      <p><sup>*</sup> <strong>Weichert Family of Companies</strong> provided partial data; T3 Sixty supplemented with additional research. Figures are estimates and may differ from actuals.<br>
+      <sup>**</sup> <strong>Compass</strong> 2025 totals include all company-owned brokerage operations including those affiliated with Christie's International Real Estate (CIRE). CIRE prior-year totals included both owned and affiliated brokerages, making year-over-year comparison not directly equivalent.<br>
+      <sup>★</sup> <strong>Compass International Holdings (pro-forma)</strong>: the merger toggle combines Compass and Anywhere Real Estate using arithmetic sums of their T3 Sixty Enterprise 20 figures — volume $852.2B, sides 1,212,401, agents 215,486 (all U.S., per T3 Sixty). Merger closed January 9, 2026 per <a href="https://www.prnewswire.com/news-releases/compass-and-anywhere-real-estate-begin-a-new-chapter-as-one-company-built-for-real-estate-professionals-302657055.html" target="_blank">Compass press release</a> and <a href="https://www.sec.gov/Archives/edgar/data/1563190/000156319026000019/comp-20260109.htm" target="_blank">SEC Form 8-K</a>. Not an audited combined filing. YoY not shown.</p>
+    </div>
   </div>
-  <div class="fn">
-    <strong>Year-over-year:</strong> 2025 from RealTrends Verified 2026 brokerage profiles / T3 Sixty 2026. 2024 baseline from RealTrends Verified 2025 / T3 Sixty 2025. Franchise network YoY reflects aggregate network figures from T3 Sixty and company press releases. Rows without 2024 comparables are excluded from YoY views.
-  </div>
-</div>
 
 </div>
 
 <script>
-/* ══════════════════════════════════════════════════════════════
-   DATA — April 2026
-   All data used with permission of RealTrends Verified and T3 Sixty.
-   ══════════════════════════════════════════════════════════════ */
-
-const DATA = [
-  /* ── FRANCHISE NETWORKS ─────────────────────────────────────
-     T3 Sixty 2026 Real Estate Almanac (KW) + company/SEC sources
-     Network totals aggregate all independently owned affiliated
-     offices under one brand. Each office has its own P&L;
-     the franchisor earns royalties, not commissions.
-  ─────────────────────────────────────────────────────────── */
-  {
-    id:'kw', name:'Keller Williams', type:'franchise', color:'#1a6b3a',
-    volume:370.7, sides:796658, agents:136511,
-    vol24:370,   sides24:null,
-    src:'T3 Sixty 2026 Real Estate Almanac; KW press release April 8 2026. US-based figures. KW ranked #1 franchise by T3 Sixty for 9th consecutive year. Stone Point Capital partnership March 2025.',
-    srcLabel:'T3 Sixty 2026 / KW PR'
-  },
-  {
-    id:'are', name:'Anywhere Real Estate', type:'franchise', color:'#2e7d32',
-    volume:null, sides:950000, agents:311900,
-    vol24:null,  sides24:980000,
-    src:'Anywhere Real Estate Q2 2025 investor presentation: ~950K US annual sides across all brands (CB, Sotheby\'s, C21, ERA, BH&G, Corcoran). ~311,900 worldwide sales agents. Full-year 2025 enterprise volume not separately published prior to Compass merger close Jan 9 2026. Anywhere Advisors (owned brokerage only) figures are listed separately in the brokerage section.',
-    srcLabel:'Anywhere IR / Q2 2025 investor deck'
-  },
-  {
-    id:'remax', name:'RE/MAX', type:'franchise', color:'#388e3c',
-    volume:null, sides:null, agents:148660,
-    vol24:null,  sides24:null,
-    src:'RE/MAX Holdings SEC 10-K / Q4 2025 earnings (Feb 19 2026). Total global agent count 148,660 (+1.4% YoY); US+Canada 72,977 (-4.6%); outside US+Canada 75,683 (+7.9%). Network-wide transaction volume/sides not reported in SEC filings.',
-    srcLabel:'RMAX SEC 10-K / Q4 2025 earnings'
-  },
-
-  /* ── SINGLE BROKERAGES ───────────────────────────────────────
-     RealTrends Verified 2026 brokerage profiles (2025 production)
-     Each row = one licensed brokerage entity, independently verified.
-  ─────────────────────────────────────────────────────────── */
-  {
-    id:'compass', name:'Compass', type:'brokerage', color:'#185FA5',
-    volume:262.23, sides:245173, agents:36990,
-    vol24:231.04,  sides24:228785,
-    src:'RealTrends Verified 2026 brokerage profile. Includes 2025 full-year production from @properties, Ansley, Cottingham Chalk, PorchLight, Colorado Homes Realty, and Washington Fine Properties — all acquired by Compass during 2025. Merger with Anywhere closed Jan 9 2026.',
-    srcLabel:'RealTrends Verified 2026'
-  },
-  {
-    id:'anywhere', name:'Anywhere Advisors', type:'brokerage', color:'#1976D2',
-    volume:192.76, sides:245250, agents:48735,
-    vol24:183.81,  sides24:246728,
-    src:'RealTrends Verified 2026 brokerage profile. Owned brokerage arm of Anywhere Real Estate only — does not include CB, Sotheby\'s, C21 or other franchise brands. Final year as standalone entity; acquired by Compass January 9, 2026.',
-    srcLabel:'RealTrends Verified 2026'
-  },
-  {
-    id:'exp', name:'eXp Realty', type:'brokerage', color:'#c8720a',
-    volume:155.56, sides:343091, agents:63410,
-    vol24:152.66,  sides24:350119,
-    src:'RealTrends Verified 2026 brokerage profile. #1 nationally by transaction sides.',
-    srcLabel:'RealTrends Verified 2026'
-  },
-  {
-    id:'real', name:'The Real Brokerage', type:'brokerage', color:'#c0392b',
-    volume:65.22, sides:131047, agents:29122,
-    vol24:42.44,  sides24:90298,
-    src:'RealTrends Verified 2026 brokerage profile.',
-    srcLabel:'RealTrends Verified 2026'
-  },
-  {
-    id:'hanna', name:'Hanna Holdings', type:'brokerage', color:'#4a4a4a',
-    volume:40.26, sides:106868, agents:12093,
-    vol24:33.74,  sides24:92154,
-    src:'RealTrends Verified 2026 brokerage profile. #1 private independent brokerage by sides.',
-    srcLabel:'RealTrends Verified 2026'
-  },
-  {
-    id:'elliman', name:'Douglas Elliman', type:'brokerage', color:'#0C447C',
-    volume:39.76, sides:21338, agents:5759,
-    vol24:36.39,  sides24:21779,
-    src:'RealTrends Verified 2026 brokerage profile. #7 nationally by volume; luxury-focused (#17 by sides reflects high average price per transaction).',
-    srcLabel:'RealTrends Verified 2026'
-  },
+/* ═══════════════════════════════════════════════════════
+   DATA — T3 Sixty 2026 Real Estate Almanac · Enterprise 20
+   April 8, 2026 · Used with permission
+   Volume in $M · sides and agents as reported
+   ═══════════════════════════════════════════════════════ */
+const E = [
+  { rank:1,  name:'Anywhere Real Estate',         city:'Madison, NJ',      est:false, compass:false,
+    volume:557648,  volYoy:4.2,   sides:935344, sidesYoy:-1.5, agents:172228, agentsYoy:-3.9 },
+  { rank:2,  name:'Keller Williams Realty',        city:'Austin, TX',       est:false, compass:false,
+    volume:370723,  volYoy:0,     sides:796658, sidesYoy:-3.9, agents:136511, agentsYoy:-5.9 },
+  { rank:3,  name:'Compass',                       city:'New York, NY',     est:false, compass:true,
+    volume:294586,  volYoy:15.6,  sides:277057, sidesYoy:10.3, agents:43258,  agentsYoy:16.5 },
+  { rank:4,  name:'RE/MAX',                        city:'Denver, CO',       est:false, compass:false,
+    volume:234273,  volYoy:-2.1,  sides:571618, sidesYoy:-4.4, agents:48165,  agentsYoy:-6.1 },
+  { rank:5,  name:'HomeServices of America',       city:'Minneapolis, MN',  est:false, compass:false,
+    volume:197027,  volYoy:-24.9, sides:346727, sidesYoy:-5.5, agents:57717,  agentsYoy:-9.8 },
+  { rank:6,  name:'eXp World Holdings',            city:'Bellingham, WA',   est:false, compass:false,
+    volume:155560,  volYoy:1.9,   sides:343091, sidesYoy:-2,   agents:63410,  agentsYoy:-3 },
+  { rank:7,  name:'The Real Brokerage',            city:'Miami, FL',        est:false, compass:false,
+    volume:65221,   volYoy:53.7,  sides:131047, sidesYoy:45.1, agents:29122,  agentsYoy:20.6 },
+  { rank:8,  name:'Hanna Holdings',               city:'Pittsburgh, PA',   est:false, compass:false,
+    volume:40257,   volYoy:8.9,   sides:106868, sidesYoy:3.8,  agents:13149,  agentsYoy:0.6 },
+  { rank:9,  name:'Douglas Elliman',               city:'New York, NY',     est:false, compass:false,
+    volume:39762,   volYoy:9.3,   sides:21338,  sidesYoy:-2,   agents:5759,   agentsYoy:-7.7 },
+  { rank:10, name:'United Real Estate',            city:'Dallas, TX',       est:false, compass:false,
+    volume:31360,   volYoy:8.9,   sides:68167,  sidesYoy:-0.2, agents:20949,  agentsYoy:-1.8 },
+  { rank:11, name:'HomeSmart',                     city:'Scottsdale, AZ',   est:false, compass:false,
+    volume:32470,   volYoy:4.7,   sides:64791,  sidesYoy:0.5,  agents:24846,  agentsYoy:-0.6 },
+  { rank:12, name:'LPT Realty',                    city:'Lake Mary, FL',    est:false, compass:false,
+    volume:23616,   volYoy:70.4,  sides:61041,  sidesYoy:67.8, agents:21055,  agentsYoy:43.6 },
+  { rank:13, name:'EXIT Realty Corp.',             city:'Mississauga, ON',  est:false, compass:false,
+    volume:18540,   volYoy:-13.6, sides:56391,  sidesYoy:-17.6,agents:17269,  agentsYoy:-17.2 },
+  { rank:14, name:'Weichert Family of Companies',  city:'Morris Plains, NJ',est:true,  compass:false,
+    volume:28000,   volYoy:-3.4,  sides:56300,  sidesYoy:-9,   agents:12500,  agentsYoy:4.2 },
+  { rank:15, name:'Redfin',                        city:'Seattle, WA',      est:false, compass:false,
+    volume:31872,   volYoy:8.1,   sides:50484,  sidesYoy:8.8,  agents:2284,   agentsYoy:14.3 },
+  { rank:16, name:'Side',                          city:'San Francisco, CA',est:false, compass:false,
+    volume:25779,   volYoy:4.8,   sides:28912,  sidesYoy:2.2,  agents:4000,   agentsYoy:6.5 },
+  { rank:17, name:'Fathom Holdings',               city:'Cary, NC',         est:false, compass:false,
+    volume:15710,   volYoy:19.9,  sides:42200,  sidesYoy:14.7, agents:14210,  agentsYoy:-0.6 },
+  { rank:18, name:'Realty Executives',             city:'Phoenix, AZ',      est:false, compass:false,
+    volume:14383,   volYoy:19.9,  sides:37593,  sidesYoy:17.5, agents:4819,   agentsYoy:-16.9 },
+  { rank:19, name:'NextHome',                      city:'Pleasanton, CA',   est:false, compass:false,
+    volume:11499,   volYoy:14.7,  sides:30640,  sidesYoy:13,   agents:5405,   agentsYoy:5.9 },
+  { rank:20, name:'Peerage Realty Partners',       city:'Toronto, ON',      est:false, compass:false,
+    volume:24805,   volYoy:1.2,   sides:24957,  sidesYoy:-1.1, agents:4343,   agentsYoy:-3.6 },
+  { rank:20, name:'William Raveis Real Estate',    city:'Shelton, CT',      est:false, compass:false,
+    volume:17500,   volYoy:4.9,   sides:19128,  sidesYoy:-2.8, agents:4300,   agentsYoy:-0.9 },
 ];
 
-const MERGER = {
-  id:'merged', name:'Compass + Anywhere (post-merger)', type:'merged', color:'#9b1d1d',
-  volume:+(262.23+192.76).toFixed(2), sides:245173+245250, agents:36990+48735,
-  vol24:+(231.04+183.81).toFixed(2), sides24:228785+246728,
-  src:'Arithmetic sum of RealTrends Verified 2026 brokerage profiles for Compass and Anywhere Advisors. Merger closed January 9, 2026 (Compass IR / SEC Form 8-K).',
-  srcLabel:'RealTrends Verified 2026 (combined)'
+/* Compute derived fields */
+E.forEach(r => {
+  r.avgPrice = (r.volume && r.sides) ? Math.round((r.volume * 1e6) / r.sides) : null;
+  r.yoyKey = r.volYoy;
+});
+
+/* Colour palette — large to small by volume rank, warm→cool gradient */
+const PALETTE = [
+  '#0f0f0f','#1a1a2e','#185FA5','#1a5f7a','#1a6b3a',
+  '#c8720a','#c0392b','#4a4a4a','#0C447C','#2e7d32',
+  '#388e3c','#7b4d00','#8e1c4a','#5c3d2e','#cc2128',
+  '#1565C0','#5d4037','#37474f','#4a148c','#00695c','#b71c1c'
+];
+E.forEach((r, i) => { r.color = PALETTE[i % PALETTE.length]; });
+
+/* ── MERGER PRO-FORMA ROW ──────────────────────────────────────────────
+   Anywhere Real Estate (rank 1) + Compass (rank 3) combined.
+   Volume: $557,648M + $294,586M = $852,234M  (T3 Sixty Enterprise 20, US)
+   Sides:   935,344  + 277,057  = 1,212,401  (T3 Sixty Enterprise 20, US)
+   Agents:  ~340,000 global professionals     (Compass IR press release, Jan 9 2026)
+     NOTE: 340K is worldwide (120 countries). T3 Sixty US-only sum = ~215,486.
+   YoY: Not meaningful — two separate pre-merger trajectories.
+   Source: T3 Sixty 2026 Real Estate Almanac Enterprise 20 + Compass IR.
+   This is a 2025 pro-forma — NOT an audited combined filing.
+   Merger closed January 9, 2026.
+   ─────────────────────────────────────────────────────────────────── */
+const MERGED = {
+  rank: 1,
+  name: 'Compass International Holdings',
+  city: 'New York, NY (pro-forma — Jan 9, 2026)',
+  est: false, compass: false, merged: true,
+  volume:  557648 + 294586,  // $852,234M — T3 Sixty Enterprise 20 US sums
+  sides:   935344 + 277057,  // 1,212,401 — T3 Sixty Enterprise 20 US sums
+  agents:  172228 + 43258,   // 215,486 — US agents per T3 Sixty Enterprise 20
+  volYoy:  null, sidesYoy: null, agentsYoy: null,
+  color:   '#7a1515',
+  note:    '2025 pro-forma: arithmetic sum of T3 Sixty 2026 Enterprise 20 US figures for Anywhere Real Estate ($557.6B / 935,344 sides / 172,228 US agents) and Compass ($294.6B / 277,057 sides / 43,258 US agents). All figures are US-only, consistent with all other rows. Merger closed January 9, 2026 (Compass IR / SEC Form 8-K). Not an audited combined filing. YoY not shown.'
+};
+MERGED.avgPrice = Math.round((MERGED.volume * 1e6) / MERGED.sides);
+
+/* ═══════════════ STATE */
+let view = 'chart', metric = 'volume', sortMode = 'metric', merger = false;
+let sortKey = 'volume', sortAsc = false;
+let mainChart = null, yoyChart = null;
+
+const MC = {
+  volume:  { label:'Sales volume', fmt: v => '$' + (v/1000).toFixed(1) + 'B', tick: v => '$' + (v/1000).toFixed(0) + 'B', acc: r => r.volume, yoyAcc: r => r.volYoy },
+  sides:   { label:'Transaction sides', fmt: v => Math.round(v).toLocaleString(), tick: v => (v/1000).toFixed(0)+'K', acc: r => r.sides, yoyAcc: r => r.sidesYoy },
+  agents:  { label:'Agent count', fmt: v => Math.round(v).toLocaleString(), tick: v => (v/1000).toFixed(0)+'K', acc: r => r.agents, yoyAcc: r => r.agentsYoy },
+  avgPrice:{ label:'Implied avg sale price', fmt: v => '$' + (v/1000).toFixed(0) + 'K', tick: v => '$' + (v/1000).toFixed(0) + 'K', acc: r => r.avgPrice, yoyAcc: r => null },
 };
 
-/* ══════════════════════════════════════════════════════════════ STATE */
-let view='chart', metric='volume', filter='all', merger=false;
-let sortKey='volume', sortAsc=false;
-let mainChart=null, yoyChart=null;
-
-const MC={
-  volume:  {label:'Sales volume ($B)',           fmt:v=>'$'+v.toFixed(2)+'B',           tick:v=>'$'+v+'B',                         acc:r=>r.volume},
-  sides:   {label:'Transaction sides',           fmt:v=>Math.round(v).toLocaleString(),  tick:v=>v>=1000?(v/1000).toFixed(0)+'K':v, acc:r=>r.sides},
-  avgPrice:{label:'Implied avg sale price',      fmt:v=>'$'+(v/1000).toFixed(0)+'K',     tick:v=>'$'+(v/1000).toFixed(0)+'K',       acc:r=>r.avgPrice},
-  agents:  {label:'Agent / professional count',  fmt:v=>Math.round(v).toLocaleString(),  tick:v=>v>=1000?(v/1000).toFixed(0)+'K':v, acc:r=>r.agents},
-};
-
-const FN_RT  = '<strong>Single brokerages</strong> — <a href="https://www.realtrends.com/ranking/best-real-estate-agents-united-states/brokerages-by-volume/" target="_blank">RealTrends Verified 2026</a> brokerage profiles (2025 production). Used with permission.';
-const FN_T3  = '<strong>Keller Williams</strong> — <a href="https://www.realestatealmanac.com/" target="_blank">T3 Sixty 2026 Real Estate Almanac</a> / KW press release April 8 2026. Used with permission.';
-const FN_ARE = '<strong>Anywhere Real Estate</strong> — Q2 2025 investor presentation (sides/agents across all brands). Network-wide volume not published prior to Compass merger close. <strong>RE/MAX</strong> — RMAX SEC 10-K / Q4 2025 earnings (Feb 19 2026); network volume/sides not in SEC filings.';
-const FN_AVG = '<strong>Implied avg price</strong> = Volume ÷ (Sides ÷ 2). Derived estimate, not audited. Franchise network estimates particularly approximate.';
-const FN_SCOPE = '<strong>Scope note:</strong> Franchise networks (green) aggregate all independently owned affiliated offices under one brand — fundamentally different in scale and structure to a single brokerage (blue). Comparisons across types should account for this.';
-
-/* ══════════════════════════════════════════════════════════════ HELPERS */
-function rows(){
-  let d=[...DATA];
-  if(merger){ d=d.filter(r=>r.id!=='compass'&&r.id!=='anywhere'); d.unshift(MERGER); }
-  if(filter==='franchise') d=d.filter(r=>r.type==='franchise');
-  if(filter==='brokerage') d=d.filter(r=>r.type==='brokerage'||r.type==='merged');
-  d.forEach(r=>{
-    r.avgPrice=(r.volume&&r.sides)?Math.round((r.volume*1e9)/(r.sides/2)):null;
-    r.yoy=(r.volume&&r.vol24)?((r.volume-r.vol24)/r.vol24*100):null;
+/* ═══════════════ HELPERS */
+function activeData() {
+  const cfg = MC[metric];
+  let src = merger
+    ? [MERGED, ...E.filter(r => r.id !== 'compass_ent' && !['Anywhere Real Estate','Compass'].includes(r.name))]
+    : [...E];
+  let d = src.filter(r => cfg.acc(r) != null);
+  if (sortMode === 'metric') d = d.sort((a, b) => cfg.acc(b) - cfg.acc(a));
+  else if (sortMode === 'yoy') d = d.sort((a, b) => {
+    const ay = cfg.yoyAcc(a), by = cfg.yoyAcc(b);
+    if (ay == null) return 1; if (by == null) return -1;
+    return by - ay;
   });
+  else d = d.sort((a, b) => a.name.localeCompare(b.name));
   return d;
 }
-function sorted(d){ const c=MC[metric]; return [...d].filter(r=>c.acc(r)!=null).sort((a,b)=>sortAsc?c.acc(a)-c.acc(b):c.acc(b)-c.acc(a)); }
-function tsorted(d){
-  return [...d].filter(r=>r.volume||r.sides||r.agents).sort((a,b)=>{
-    let av=a[sortKey],bv=b[sortKey];
-    if(av==null)av=sortAsc?Infinity:-Infinity;
-    if(bv==null)bv=sortAsc?Infinity:-Infinity;
-    if(typeof av==='string')return sortAsc?av.localeCompare(bv):bv.localeCompare(av);
-    return sortAsc?av-bv:bv-av;
-  });
-}
-function bc(r){ return r.color; }
-function chip(r){ return r.type==='franchise'?'<span class="chip cf">franchise</span>':r.type==='merged'?'<span class="chip cm">merged</span>':'<span class="chip cb">brokerage</span>'; }
 
-/* ══════════════════════════════════════════════════════════════ SETTERS */
-function setView(v){
-  view=v;
-  ['chart','table','yoy'].forEach(t=>{
-    document.getElementById('p'+t.charAt(0).toUpperCase()+t.slice(1)).style.display=v===t?'':'none';
-    const b=document.getElementById('vt-'+t);if(b)b.classList.toggle('on',v===t);
+function tableSorted() {
+  const src = merger
+    ? [MERGED, ...E.filter(r => !['Anywhere Real Estate','Compass'].includes(r.name))]
+    : [...E];
+  return src.sort((a, b) => {
+    let av = a[sortKey], bv = b[sortKey];
+    if (av == null) av = sortAsc ? Infinity : -Infinity;
+    if (bv == null) bv = sortAsc ? Infinity : -Infinity;
+    if (typeof av === 'string') return sortAsc ? av.localeCompare(bv) : bv.localeCompare(av);
+    return sortAsc ? av - bv : bv - av;
   });
-  document.querySelectorAll('#vSeg button').forEach((b,i)=>b.classList.toggle('on',['chart','table','yoy'][i]===v));
-  if(v==='chart')renderChart();
-  if(v==='table')renderTable();
-  if(v==='yoy')renderYoy();
 }
-function setMetric(m){
-  metric=m;
-  document.querySelectorAll('#mSeg button').forEach((b,i)=>b.classList.toggle('on',['volume','sides','avgPrice','agents'][i]===m));
-  if(view==='chart')renderChart(); if(view==='table')renderTable();
+
+function toggleMerger() {
+  merger = !merger;
+  document.getElementById('mergeBtn').classList.toggle('on', merger);
+  if (view === 'chart') renderChart();
+  if (view === 'table') renderTable();
+  if (view === 'yoy')   renderYoy();
 }
-function setFilter(f){
-  filter=f;
-  document.querySelectorAll('#fSeg button').forEach((b,i)=>b.classList.toggle('on',['all','franchise','brokerage'][i]===f));
-  if(view==='chart')renderChart(); if(view==='table')renderTable(); if(view==='yoy')renderYoy();
+
+function yoySpan(v, suffix='%') {
+  if (v == null) return `<span class="ya">—</span>`;
+  return `<span class="${v >= 0 ? 'yp' : 'yn'}">${v >= 0 ? '+' : ''}${v.toFixed(1)}${suffix}</span>`;
 }
-function toggleMerger(){
-  merger=!merger;
-  document.getElementById('mergeBtn').classList.toggle('on',merger);
-  if(view==='chart')renderChart(); if(view==='table')renderTable(); if(view==='yoy')renderYoy();
+
+const FN = `<strong>Source:</strong> <a href="https://www.realestatealmanac.com/enterprises" target="_blank">T3 Sixty 2026 Real Estate Almanac · Enterprise 20</a> (April 8, 2026). Used with permission. Enterprise figures combine owned and franchised office production under one corporate umbrella. Volume in millions USD. <sup>*</sup> Weichert: partial data supplemented by T3 Sixty research. <sup>**</sup> Compass: Christie's International Real Estate methodology change affects YoY comparability.`;
+
+/* ═══════════════ SETTERS */
+function setView(v) {
+  view = v;
+  ['chart','table','yoy'].forEach(t => {
+    document.getElementById('p' + t.charAt(0).toUpperCase() + t.slice(1)).style.display = v === t ? '' : 'none';
+    const b = document.getElementById('vt-' + t); if (b) b.classList.toggle('on', v === t);
+  });
+  document.querySelectorAll('#vSeg button').forEach((b, i) => b.classList.toggle('on', ['chart','table','yoy'][i] === v));
+  if (v === 'chart') renderChart();
+  if (v === 'table') renderTable();
+  if (v === 'yoy')   renderYoy();
 }
-function sb(k){
-  if(sortKey===k)sortAsc=!sortAsc;else{sortKey=k;sortAsc=false;}
-  document.querySelectorAll('th[id^="th-"]').forEach(th=>{th.classList.remove('srt');const a=th.querySelector('.arr');if(a)a.textContent='↕';});
-  const th=document.getElementById('th-'+k);
-  if(th){th.classList.add('srt');const a=th.querySelector('.arr');if(a)a.textContent=sortAsc?'↑':'↓';}
+
+function setMetric(m) {
+  metric = m;
+  document.querySelectorAll('#mSeg button').forEach((b, i) => b.classList.toggle('on', ['volume','sides','agents','avgPrice'][i] === m));
+  if (view === 'chart') renderChart();
+  if (view === 'yoy')   renderYoy();
+}
+
+function setSort(s) {
+  sortMode = s;
+  document.querySelectorAll('#sSeg button').forEach((b, i) => b.classList.toggle('on', ['metric','yoy','name'][i] === s));
+  if (view === 'chart') renderChart();
+}
+
+function sb(k) {
+  if (sortKey === k) sortAsc = !sortAsc; else { sortKey = k; sortAsc = false; }
+  document.querySelectorAll('th[id^="th-"]').forEach(th => { th.classList.remove('srt'); const a = th.querySelector('.arr'); if (a) a.textContent = '↕'; });
+  const th = document.getElementById('th-' + k);
+  if (th) { th.classList.add('srt'); const a = th.querySelector('.arr'); if (a) a.textContent = sortAsc ? '↑' : '↓'; }
   renderTable();
 }
 
-/* ══════════════════════════════════════════════════════════════ CHART */
-function renderChart(){
-  const cfg=MC[metric], d=sorted(rows());
-  const h=Math.max(320,d.length*52+70);
-  document.getElementById('cWrap').style.height=h+'px';
-  document.getElementById('cTitle').textContent=cfg.label+' — 2025 production';
-  const hasFran=d.some(r=>r.type==='franchise'), hasBrok=d.some(r=>r.type==='brokerage'||r.type==='merged');
-  document.getElementById('cNote').textContent=hasFran&&hasBrok?'Franchise networks (green) aggregate all affiliated offices — different scope to single brokerages (blue)':hasFran?'Franchise networks aggregate all affiliated offices':'Single brokerages — one licensed entity each';
-  const dk=matchMedia('(prefers-color-scheme:dark)').matches;
-  if(mainChart){mainChart.destroy();mainChart=null;}
-  mainChart=new Chart(document.getElementById('mainC'),{
-    type:'bar',
-    data:{labels:d.map(r=>r.name),datasets:[{
-      data:d.map(r=>cfg.acc(r)||0),
-      backgroundColor:d.map(r=>bc(r)+'cc'),
-      hoverBackgroundColor:d.map(r=>bc(r)),
-      borderWidth:0,borderRadius:3,barThickness:26,
-    }]},
-    options:{
-      indexAxis:'y',responsive:true,maintainAspectRatio:false,
-      plugins:{legend:{display:false},tooltip:{callbacks:{
-        label:ctx=>'  '+cfg.fmt(ctx.raw),
-        afterLabel:ctx=>{
-          const r=d[ctx.dataIndex];if(!r)return'';
-          const tl=r.type==='franchise'?'Franchise network':r.type==='merged'?'Post-merger combined':'Single brokerage';
-          const yoy=r.yoy!=null?' · YoY: '+(r.yoy>=0?'+':'')+r.yoy.toFixed(1)+'%':'';
-          return '  '+tl+' · '+r.srcLabel+yoy;
-        }
-      }}},
-      scales:{
-        x:{grid:{color:dk?'rgba(255,255,255,.06)':'rgba(0,0,0,.05)'},ticks:{color:dk?'#888':'#777',font:{size:11},callback:v=>cfg.tick(v)},border:{display:false}},
-        y:{grid:{display:false},ticks:{
-          color:ctx=>{const r=d[ctx.index];if(!r)return'#777';return r.type==='franchise'?(dk?'#5DCAA5':'#0F6E56'):r.type==='merged'?(dk?'#f88':'#9b1d1d'):(dk?'#90caf9':'#185FA5');},
-          font:ctx=>{const r=d[ctx.index];return{size:12,weight:r&&r.type==='franchise'?'500':'400'};},
-          autoSkip:false,
-        },border:{display:false}}
-      },layout:{padding:{right:24,top:4}}
+/* ═══════════════ CHART */
+function renderChart() {
+  const cfg = MC[metric];
+  const d = activeData();
+  const h = Math.max(380, d.length * 44 + 70);
+  document.getElementById('cWrap').style.height = h + 'px';
+  const mergerLabel = merger ? ' — pro-forma combined view' : '';
+  document.getElementById('cTitle').textContent = cfg.label + ' — 2025 enterprise production' + mergerLabel;
+
+  const dk = matchMedia('(prefers-color-scheme:dark)').matches;
+  const gc = dk ? 'rgba(255,255,255,.06)' : 'rgba(0,0,0,.05)';
+  const tc = dk ? '#888' : '#777';
+
+  if (mainChart) { mainChart.destroy(); mainChart = null; }
+  mainChart = new Chart(document.getElementById('mainC'), {
+    type: 'bar',
+    data: {
+      labels: d.map(r => r.merged ? r.name + ' ★' : r.name),
+      datasets: [{
+        data: d.map(r => cfg.acc(r) || 0),
+        backgroundColor: d.map(r => r.color + 'cc'),
+        hoverBackgroundColor: d.map(r => r.color),
+        borderWidth: 0, borderRadius: 3, barThickness: 24,
+      }]
+    },
+    options: {
+      indexAxis: 'y', responsive: true, maintainAspectRatio: false,
+      plugins: {
+        legend: { display: false },
+        tooltip: { callbacks: {
+          label: ctx => '  ' + cfg.fmt(ctx.raw),
+          afterLabel: ctx => {
+            const r = d[ctx.dataIndex]; if (!r) return '';
+            if (r.merged) return ['  2025 pro-forma — sum of T3 Sixty Enterprise 20 figures', '  Compass ($294.6B) + Anywhere Real Estate ($557.6B)', '  Merger closed January 9, 2026'];
+            const yoy = cfg.yoyAcc(r);
+            const yoyStr = yoy != null ? '  YoY: ' + (yoy >= 0 ? '+' : '') + yoy.toFixed(1) + '%' : '';
+            return ['  ' + r.city, yoyStr].filter(Boolean).join('\n');
+          }
+        }}
+      },
+      scales: {
+        x: { grid: { color: gc }, ticks: { color: tc, font: { size: 11 }, callback: v => cfg.tick(v) }, border: { display: false } },
+        y: { grid: { display: false }, ticks: {
+          color: ctx => {
+            const r = d[ctx.index];
+            return r && r.merged ? (dk ? '#f88' : '#7a1515') : tc;
+          },
+          font: ctx => {
+            const r = d[ctx.index];
+            return { size: 12, weight: r && r.merged ? '500' : '400' };
+          },
+          autoSkip: false
+        }, border: { display: false } }
+      },
+      layout: { padding: { right: 24, top: 4 } }
     }
   });
-  document.getElementById('cFoot').innerHTML=[FN_RT,FN_T3,FN_ARE,metric==='avgPrice'?FN_AVG:'',FN_SCOPE].filter(Boolean).join(' &nbsp; ');
+
+  const mergerFN = merger
+    ? ' <strong>★ Pro-forma:</strong> Compass International Holdings = arithmetic sum of T3 Sixty 2026 Enterprise 20 US figures for Compass ($294.6B / 277,057 sides) + Anywhere Real Estate ($557.6B / 935,344 sides). Agent count ~340,000 is global (Compass IR press release, Jan 9 2026) — not comparable to the US-only figures for other rows. Merger closed January 9, 2026. Not an audited combined filing.'
+    : '';
+  document.getElementById('cFoot').innerHTML = FN + mergerFN;
 }
 
-/* ══════════════════════════════════════════════════════════════ TABLE */
-function renderTable(){
-  const d=tsorted(rows());
-  const mv=Math.max(...d.map(r=>r.volume||0));
-  document.getElementById('tbody').innerHTML=d.map((r,i)=>{
-    r.avgPrice=(r.volume&&r.sides)?Math.round((r.volume*1e9)/(r.sides/2)):null;
-    r.yoy=(r.volume&&r.vol24)?((r.volume-r.vol24)/r.vol24*100):null;
-    const pct=((r.volume||0)/mv*100).toFixed(0);
-    const yoyStr=r.yoy!=null?`<span class="${r.yoy>=0?'gp':'gn'}">${r.yoy>=0?'+':''}${r.yoy.toFixed(1)}%</span>`:`<span class="ga">—</span>`;
-    const tp=r.src?`<span class="tip" title="${r.src.replace(/"/g,"'")}">?</span>`:'';
-    const trC=r.type==='merged'?' class="mr"':'';
-    return `<tr${trC}>
-      <td class="rn">${i+1}</td>
-      <td><div class="nc"><span class="dot" style="background:${bc(r)}"></span><span class="bn">${r.name}</span>${chip(r)}${tp}</div></td>
-      <td style="font-size:11px;color:var(--g4)">${r.type==='franchise'?'Franchise':'Brokerage'}</td>
-      <td><div class="bw"><div class="bt"><div class="bf" style="width:${pct}%;background:${bc(r)}"></div></div><span class="nm">${r.volume?'$'+r.volume.toFixed(2)+'B':'—'}</span></div></td>
-      <td class="nm">${r.sides?r.sides.toLocaleString():'—'}</td>
-      <td class="nm">${r.avgPrice?'$'+(r.avgPrice/1000).toFixed(0)+'K':'—'}</td>
-      <td class="nm">${r.agents?(r.agents>=1000?(r.agents/1000).toFixed(0)+'K':r.agents):'—'}</td>
-      <td>${yoyStr}</td>
+/* ═══════════════ TABLE */
+function renderTable() {
+  const d = tableSorted();
+  const mv = Math.max(...d.map(r => r.volume || 0));
+  document.getElementById('tbody').innerHTML = d.map((r, i) => {
+    const pct = ((r.volume || 0) / mv * 100).toFixed(0);
+    const avgFmt = r.avgPrice ? '$' + (r.avgPrice / 1000).toFixed(0) + 'K' : '—';
+    const estMark = r.est ? '<sup class="est">*</sup>' : '';
+    const compMark = r.compass ? '<sup class="est">**</sup>' : '';
+    const mergedMark = r.merged ? '<sup class="est">★</sup>' : '';
+    const tipText = r.merged ? r.note
+      : (r.est ? '* Partial data — T3 Sixty supplemented with additional research. ' : '')
+      + (r.compass ? '** Compass YoY not directly comparable due to Christie\'s International Real Estate methodology change.' : '');
+    const tp = (r.est || r.compass || r.merged) ? `<span class="tip" title="${tipText.replace(/"/g,"'")}">?</span>` : '';
+    const trStyle = r.merged ? ' style="background:#fff8f8"' : '';
+    const nameStyle = r.merged ? 'font-weight:500;font-size:12px;color:#7a1515' : 'font-weight:500;font-size:12px';
+    return `<tr${trStyle}>
+      <td class="rn">${i + 1}</td>
+      <td>
+        <div class="nc"><span class="dot" style="background:${r.color}"></span>
+          <div><div style="${nameStyle}">${r.name}${estMark}${compMark}${mergedMark}${tp}</div><div class="co">${r.city}</div></div>
+        </div>
+      </td>
+      <td>
+        <div class="bw"><div class="bt"><div class="bf" style="width:${pct}%;background:${r.color}"></div></div>
+        <span class="nm">$${(r.volume / 1000).toFixed(1)}B</span></div>
+      </td>
+      <td>${r.merged ? '<span class="ya">pro-forma</span>' : yoySpan(r.volYoy)}</td>
+      <td class="nm">${r.sides != null ? r.sides.toLocaleString() : '—'}</td>
+      <td>${r.merged ? '<span class="ya">pro-forma</span>' : yoySpan(r.sidesYoy)}</td>
+      <td class="nm">${r.agents != null ? r.agents.toLocaleString() : '—'}</td>
+      <td>${r.merged ? '<span class="ya">pro-forma</span>' : yoySpan(r.agentsYoy)}</td>
+      <td class="nm">${avgFmt}</td>
     </tr>`;
   }).join('');
-  document.getElementById('tFoot').innerHTML=`${FN_RT} &nbsp; ${FN_T3} &nbsp; ${FN_ARE} &nbsp; ${FN_AVG} &nbsp; ${FN_SCOPE} &nbsp; <strong>Hover the ? icon</strong> on each row for full source and methodology notes.`;
 }
 
-/* ══════════════════════════════════════════════════════════════ YOY */
-function renderYoy(){
-  const d=rows().filter(r=>r.volume&&r.vol24).map(r=>({...r,
-    volD:+(r.volume-r.vol24).toFixed(2),
-    volP:(r.volume-r.vol24)/r.vol24*100,
-  }));
-  if(!d.length){document.getElementById('yHL').textContent='No year-over-year data available for current filter.';document.getElementById('yBL').innerHTML='';document.getElementById('movers').innerHTML='';return;}
-  const byP=[...d].sort((a,b)=>Math.abs(b.volP)-Math.abs(a.volP));
-  const leader=byP[0];
-  const bigD=[...d].sort((a,b)=>Math.abs(b.volD)-Math.abs(a.volD))[0];
-  document.getElementById('yHL').textContent=leader.name+' leads YoY growth at '+(leader.volP>=0?'+':'')+leader.volP.toFixed(1)+'% — the standout mover in the 2026 rankings';
-  const buls=[];
-  buls.push(`<strong>${leader.name}</strong> added $${Math.abs(leader.volD).toFixed(1)}B — ${leader.volP>=0?'up':'down'} ${Math.abs(leader.volP).toFixed(1)}% year over year`);
-  if(bigD.id!==leader.id) buls.push(`<strong>${bigD.name}</strong> had the largest absolute dollar gain at +$${bigD.volD.toFixed(1)}B`);
-  const dec=d.filter(r=>r.volP<0);
-  if(dec.length) buls.push(`${dec.length===1?'Only decliner:':'Decliners:'} ${dec.map(r=>r.name).join(', ')}`);
-  document.getElementById('yBL').innerHTML=buls.map(b=>`<div class="yoy-b">${b}</div>`).join('');
-  const gain=[...d].filter(r=>r.volP>0).sort((a,b)=>b.volP-a.volP).slice(0,4);
-  const decl=[...d].filter(r=>r.volP<0).sort((a,b)=>a.volP-b.volP).slice(0,4);
-  const dol=[...d].sort((a,b)=>b.volD-a.volD).slice(0,4);
-  function mc(title,items,vfn,cls){
-    if(!items.length)return'';
-    return`<div class="mc"><h4>${title}</h4>${items.map(r=>`<div class="mr2"><span class="mn">${r.name}</span><span class="${cls}">${vfn(r)}</span></div>`).join('')}</div>`;
+/* ═══════════════ YOY */
+function renderYoy() {
+  const cfg = MC[metric];
+  if (!cfg.yoyAcc(E[0])) {
+    document.getElementById('yHL').textContent = 'Year-over-year data not available for implied average price.';
+    document.getElementById('yBL').innerHTML = '';
+    document.getElementById('movers').innerHTML = '';
+    document.getElementById('yWrap').style.height = '80px';
+    if (yoyChart) { yoyChart.destroy(); yoyChart = null; }
+    return;
   }
-  document.getElementById('movers').innerHTML=mc('Biggest % gainers',gain,r=>`+${r.volP.toFixed(1)}%`,'mv-p')+(decl.length?mc('Declines',decl,r=>`${r.volP.toFixed(1)}%`,'mv-n'):'')+mc('Biggest $ gains',dol,r=>`+$${r.volD.toFixed(1)}B`,'mv-p');
-  const ds=[...d].sort((a,b)=>b.volP-a.volP);
-  const h=Math.max(200,ds.length*44+60);
-  document.getElementById('yWrap').style.height=h+'px';
-  const dk=matchMedia('(prefers-color-scheme:dark)').matches;
-  if(yoyChart){yoyChart.destroy();yoyChart=null;}
-  yoyChart=new Chart(document.getElementById('yoyC'),{
-    type:'bar',
-    data:{labels:ds.map(r=>r.name),datasets:[{
-      data:ds.map(r=>+r.volP.toFixed(1)),
-      backgroundColor:ds.map(r=>r.volP>=0?'#1a6b3acc':'#a01717cc'),
-      borderWidth:0,borderRadius:3,barThickness:22,
-    }]},
-    options:{
-      indexAxis:'y',responsive:true,maintainAspectRatio:false,
-      plugins:{legend:{display:false},tooltip:{callbacks:{label:ctx=>ctx.raw.toFixed(1)+'%'}}},
-      scales:{
-        x:{grid:{color:dk?'rgba(255,255,255,.05)':'rgba(0,0,0,.05)'},ticks:{color:dk?'#888':'#777',font:{size:11},callback:v=>v+'%'},border:{display:false}},
-        y:{grid:{display:false},ticks:{color:dk?'#888':'#777',font:{size:11},autoSkip:false},border:{display:false}}
-      },layout:{padding:{right:16,top:4}}
+
+  document.getElementById('yChartTitle').textContent = cfg.label + ' — year-over-year change, 2025 vs 2024';
+
+  const d = E.filter(r => cfg.yoyAcc(r) != null).sort((a, b) => cfg.yoyAcc(b) - cfg.yoyAcc(a));
+  const leader = d[0];
+  const bigDecliner = [...d].sort((a, b) => cfg.yoyAcc(a) - cfg.yoyAcc(b))[0];
+    leader.name + ' leads with +' + cfg.yoyAcc(leader).toFixed(1) + '% ' + cfg.label.toLowerCase() + ' growth — the standout mover in the 2026 Enterprise 20';
+
+  const bullets = [];
+  bullets.push(`<strong>${leader.name}</strong> posted +${cfg.yoyAcc(leader).toFixed(1)}% — well ahead of all other enterprises`);
+  if (d[1]) bullets.push(`<strong>${d[1].name}</strong> was second at +${cfg.yoyAcc(d[1]).toFixed(1)}%`);
+  const decliners = d.filter(r => cfg.yoyAcc(r) < 0);
+  if (decliners.length) bullets.push(`${decliners.length} enterprise${decliners.length > 1 ? 's' : ''} declined: ${decliners.map(r => r.name).join(', ')}`);
+  if (bigDecliner && cfg.yoyAcc(bigDecliner) < 0) bullets.push(`<strong>${bigDecliner.name}</strong> saw the steepest drop at ${cfg.yoyAcc(bigDecliner).toFixed(1)}%`);
+
+  document.getElementById('yBL').innerHTML = bullets.map(b => `<div class="yb">${b}</div>`).join('');
+
+  const gainers = d.filter(r => cfg.yoyAcc(r) > 0).slice(0, 5);
+  const decl = [...d].filter(r => cfg.yoyAcc(r) < 0).sort((a, b) => cfg.yoyAcc(a) - cfg.yoyAcc(b)).slice(0, 5);
+
+  function mCard(title, items, vFn, cls) {
+    if (!items.length) return '';
+    return `<div class="mc"><h4>${title}</h4>${items.map(r => `<div class="mr"><span class="mn">${r.name}</span><span class="${cls}">${vFn(r)}</span></div>`).join('')}</div>`;
+  }
+  document.getElementById('movers').innerHTML =
+    mCard('Biggest gainers', gainers, r => '+' + cfg.yoyAcc(r).toFixed(1) + '%', 'mv-p') +
+    (decl.length ? mCard('Declines', decl, r => cfg.yoyAcc(r).toFixed(1) + '%', 'mv-n') : '');
+
+  const h = Math.max(220, d.length * 38 + 60);
+  const mergerNote = merger
+    ? '<strong>Note:</strong> The pro-forma Compass International Holdings row is excluded from this view — the two entities had separate pre-merger growth trajectories and a combined YoY is not meaningful. Toggle off the pro-forma view to compare Compass and Anywhere Real Estate individually.'
+    : '';
+  document.getElementById('yWrap').style.height = h + 'px';
+  document.querySelector('#pYoy .fn').innerHTML = `<strong>Year-over-year:</strong> 2025 vs 2024 production as reported in the T3 Sixty 2026 Real Estate Almanac (April 8, 2026). Used with permission. <sup>**</sup> Compass YoY comparison not directly equivalent due to Christie's International Real Estate methodology change. ${mergerNote}`;
+  const dk = matchMedia('(prefers-color-scheme:dark)').matches;
+  if (yoyChart) { yoyChart.destroy(); yoyChart = null; }
+  yoyChart = new Chart(document.getElementById('yoyC'), {
+    type: 'bar',
+    data: {
+      labels: d.map(r => r.name),
+      datasets: [{
+        data: d.map(r => cfg.yoyAcc(r)),
+        backgroundColor: d.map(r => cfg.yoyAcc(r) >= 0 ? r.color + 'cc' : '#a01717cc'),
+        hoverBackgroundColor: d.map(r => cfg.yoyAcc(r) >= 0 ? r.color : '#a01717'),
+        borderWidth: 0, borderRadius: 3, barThickness: 20,
+      }]
+    },
+    options: {
+      indexAxis: 'y', responsive: true, maintainAspectRatio: false,
+      plugins: { legend: { display: false }, tooltip: { callbacks: { label: ctx => '  ' + (ctx.raw >= 0 ? '+' : '') + ctx.raw.toFixed(1) + '%' } } },
+      scales: {
+        x: { grid: { color: dk ? 'rgba(255,255,255,.06)' : 'rgba(0,0,0,.05)' }, ticks: { color: dk ? '#888' : '#777', font: { size: 11 }, callback: v => v + '%' }, border: { display: false } },
+        y: { grid: { display: false }, ticks: { color: dk ? '#888' : '#777', font: { size: 12 }, autoSkip: false }, border: { display: false } }
+      },
+      layout: { padding: { right: 24, top: 4 } }
     }
   });
 }

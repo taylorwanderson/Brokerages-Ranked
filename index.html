@@ -2,624 +2,397 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Brokerage Power Rankings — Inman</title>
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Brokerage Power Rankings 2026 — Inman</title>
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=DM+Sans:ital,wght@0,300;0,400;0,500;1,400&display=swap" rel="stylesheet">
 <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.js"></script>
 <style>
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
 :root{
-  --red:#CC1F1F;--red-dark:#A01717;--red-light:#F9EDED;
-  --black:#0f0f0f;--gray-700:#444;--gray-500:#6b6b6b;
-  --gray-300:#c8c8c8;--gray-200:#e6e6e6;--gray-100:#f4f4f2;--white:#fff;
-  --merged:#8B1A1A;--up:#1a6b3a;--down:#a01717;--up-bg:#e8f5ee;--down-bg:#fdf0f0;
-  --font-d:'Playfair Display',Georgia,serif;
-  --font-b:'DM Sans',system-ui,sans-serif;
-  --ease:.18s cubic-bezier(.4,0,.2,1);
+  --red:#CC1F1F;--black:#0f0f0f;--white:#fff;
+  --g1:#f5f4f1;--g2:#e6e4de;--g3:#ccc9c0;--g4:#999;--g6:#555;
+  --blue:#185FA5;--blue-lt:#E6F1FB;--blue-dk:#0C447C;
+  --green:#1a6b3a;--green-lt:#EAF3DE;--green-dk:#085041;
+  --Fd:'Playfair Display',Georgia,serif;
+  --Fb:'DM Sans',system-ui,sans-serif;
 }
-html{scroll-behavior:smooth}
-body{font-family:var(--font-b);background:var(--gray-100);color:var(--black);min-height:100vh}
+body{font-family:var(--Fb);background:var(--g1);color:var(--black);font-size:14px;line-height:1.6}
 
-/* HEADER */
-.site-header{background:var(--black);padding:0 32px;height:52px;display:flex;align-items:center;justify-content:space-between;position:sticky;top:0;z-index:50}
-.logo{display:flex;align-items:center;gap:9px;text-decoration:none}
-.logo-mark{background:var(--red);color:#fff;font-family:var(--font-d);font-weight:700;font-size:16px;width:30px;height:30px;display:flex;align-items:center;justify-content:center}
-.logo-name{font-family:var(--font-d);font-size:17px;font-weight:600;color:#fff}
-.logo-sep{color:#444;margin:0 2px}
-.logo-section{font-size:11px;color:#888;letter-spacing:1.5px;text-transform:uppercase}
-.header-right{display:flex;align-items:center;gap:10px}
-.header-tag{background:var(--red);color:#fff;font-size:10px;font-weight:500;padding:3px 9px;letter-spacing:.8px;text-transform:uppercase}
-.new-data-pill{background:#1a6b3a;color:#fff;font-size:10px;font-weight:500;padding:3px 9px;letter-spacing:.8px;text-transform:uppercase;display:none}
-.new-data-pill.visible{display:block;animation:blink 2s 3}
-@keyframes blink{0%,100%{opacity:1}50%{opacity:.5}}
+.nav{background:var(--black);height:52px;display:flex;align-items:center;justify-content:space-between;padding:0 28px;position:sticky;top:0;z-index:100}
+.logo{display:flex;align-items:center;gap:10px;text-decoration:none}
+.logo-box{background:var(--red);color:#fff;font-family:var(--Fd);font-weight:700;font-size:16px;width:30px;height:30px;display:flex;align-items:center;justify-content:center;flex-shrink:0}
+.logo-name{font-family:var(--Fd);font-size:17px;font-weight:600;color:#fff}
+.logo-sec{font-size:11px;color:#555;letter-spacing:1.5px;text-transform:uppercase;margin-left:2px}
+.nav-pill{background:var(--red);color:#fff;font-size:10px;font-weight:500;padding:3px 9px;letter-spacing:.8px;text-transform:uppercase}
 
-/* HERO */
-.hero{background:var(--black);padding:40px 32px 36px;border-bottom:3px solid var(--red)}
-.hero-eyebrow{font-size:11px;font-weight:500;letter-spacing:2px;text-transform:uppercase;color:var(--red);margin-bottom:10px}
-.hero h1{font-family:var(--font-d);font-size:clamp(26px,4vw,42px);font-weight:700;color:#fff;line-height:1.15;max-width:700px;margin-bottom:12px}
-.hero-sub{font-size:15px;color:#aaa;max-width:620px;line-height:1.7;margin-bottom:24px}
-.hero-meta{font-size:12px;color:#666;border-top:1px solid #222;padding-top:14px;display:flex;gap:20px;flex-wrap:wrap;align-items:center}
-.data-freshness{font-size:11px;padding:3px 9px;font-weight:500;text-transform:uppercase;letter-spacing:.5px}
-.data-current{background:#1a6b3a;color:#fff}
-.data-pending{background:#444;color:#ccc}
+.hero{background:var(--black);padding:36px 28px 28px;border-bottom:3px solid var(--red)}
+.hero-inner{max-width:1000px;margin:0 auto}
+.eyebrow{font-size:10px;font-weight:500;letter-spacing:2.5px;text-transform:uppercase;color:var(--red);margin-bottom:10px}
+.hero h1{font-family:var(--Fd);font-size:clamp(24px,4vw,40px);font-weight:700;color:#fff;line-height:1.1;margin-bottom:12px;max-width:700px}
+.hero-sub{font-size:14px;color:#aaa;line-height:1.75;max-width:660px;margin-bottom:20px}
+.hero-meta{display:flex;flex-wrap:wrap;gap:16px;font-size:11px;color:#555;border-top:1px solid #1a1a1a;padding-top:14px}
+.sbadge{background:#1a1a1a;color:#888;font-size:10px;padding:2px 7px;letter-spacing:.5px;margin-right:3px}
 
-/* MERGER ALERT */
-.merger-alert{background:#1a0a0a;border-left:3px solid var(--red);margin:20px 32px 0;padding:14px 18px;display:flex;gap:14px}
-.merger-alert h3{font-size:13px;font-weight:500;color:#fff;margin-bottom:3px}
-.merger-alert p{font-size:13px;color:#999;line-height:1.6}
-.merger-alert strong{color:#ccc}
+.merger-strip{background:#1a1a1a;border-left:3px solid var(--red);padding:14px 20px}
+.merger-inner{max-width:1000px;margin:0 auto}
+.merger-strip h3{font-family:var(--Fd);font-size:14px;font-weight:600;color:#fff;margin-bottom:6px}
+.merger-strip p{font-size:12px;color:#888;line-height:1.7}
+.merger-strip strong{color:#ccc;font-weight:500}
+.mstats{display:flex;gap:28px;margin-top:12px;flex-wrap:wrap}
+.mstat .v{font-family:var(--Fd);font-size:22px;color:#fff;font-weight:600;line-height:1}
+.mstat .l{font-size:11px;color:#555;margin-top:3px}
 
-/* CONTAINER */
-.container{max-width:1100px;margin:0 auto;padding:22px 32px}
+.wrap{max-width:1000px;margin:0 auto;padding:20px 28px 60px}
 
-/* ── STORY BANNER (hidden until new data loaded) ── */
-.story-banner{background:var(--black);border-left:4px solid var(--red);padding:20px 24px;margin-bottom:20px;display:none}
-.story-banner.visible{display:block}
-.story-banner-label{font-size:10px;font-weight:500;letter-spacing:2px;text-transform:uppercase;color:var(--red);margin-bottom:8px}
-.story-banner h2{font-family:var(--font-d);font-size:22px;color:#fff;margin-bottom:10px;line-height:1.2}
-.story-bullets{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px;margin-top:14px}
-.story-bullet{background:#1a1a1a;padding:14px 16px;border-top:2px solid}
-.story-bullet.positive{border-color:#1a6b3a}
-.story-bullet.negative{border-color:var(--red)}
-.story-bullet.neutral{border-color:#555}
-.story-bullet .metric{font-size:11px;text-transform:uppercase;letter-spacing:.8px;color:#888;margin-bottom:6px}
-.story-bullet .value{font-family:var(--font-d);font-size:20px;color:#fff;font-weight:600;line-height:1;margin-bottom:4px}
-.story-bullet .caption{font-size:12px;color:#aaa;line-height:1.5}
-
-/* CONTROLS */
-.controls-bar{background:var(--white);border:1px solid var(--gray-200);padding:13px 16px;margin-bottom:16px;display:flex;flex-wrap:wrap;gap:12px;align-items:flex-end}
-.ctrl-group{display:flex;flex-direction:column;gap:4px}
-.ctrl-label{font-size:10px;font-weight:500;letter-spacing:1.5px;text-transform:uppercase;color:var(--gray-500)}
-.seg{display:flex;border:1px solid var(--gray-300);overflow:hidden}
-.seg button{font-family:var(--font-b);font-size:12px;font-weight:500;padding:6px 12px;border:none;border-right:1px solid var(--gray-300);background:transparent;color:var(--gray-500);cursor:pointer;transition:all var(--ease);white-space:nowrap}
+.controls{background:var(--white);border:1px solid var(--g2);padding:12px 14px;margin-bottom:14px;display:flex;flex-wrap:wrap;gap:12px;align-items:flex-end}
+.cl{font-size:10px;font-weight:500;letter-spacing:1.5px;text-transform:uppercase;color:var(--g4);display:block;margin-bottom:4px}
+.seg{display:flex;border:1px solid var(--g2);overflow:hidden}
+.seg button{font-family:var(--Fb);font-size:12px;font-weight:500;padding:5px 13px;border:none;border-right:1px solid var(--g2);background:transparent;color:var(--g4);cursor:pointer;transition:all .15s;white-space:nowrap}
 .seg button:last-child{border-right:none}
-.seg button.active{background:var(--black);color:#fff}
-.pill-row{display:flex;gap:5px;flex-wrap:wrap}
-.pill{font-family:var(--font-b);font-size:12px;padding:5px 11px;border:1px solid var(--gray-300);background:transparent;color:var(--gray-500);cursor:pointer;transition:all var(--ease)}
-.pill.active{background:var(--black);color:#fff;border-color:var(--black)}
-.merger-toggle-wrap{margin-left:auto;display:flex;flex-direction:column;gap:4px;align-items:flex-end}
-.merger-switch{display:flex;align-items:center;gap:9px;cursor:pointer}
-.merger-switch input{display:none}
-.switch-track{width:40px;height:21px;background:var(--gray-300);position:relative;transition:background var(--ease);flex-shrink:0}
-.switch-thumb{position:absolute;top:2px;left:2px;width:17px;height:17px;background:#fff;transition:transform var(--ease)}
-.merger-switch input:checked + .switch-track{background:var(--merged)}
-.merger-switch input:checked + .switch-track .switch-thumb{transform:translateX(19px)}
-.merger-switch-text{font-size:12px;font-weight:500;color:var(--gray-700)}
+.seg button.on{background:var(--black);color:#fff}
+.merger-toggle{margin-left:auto;display:flex;align-items:flex-end}
+.tbtn{display:flex;align-items:center;gap:8px;background:transparent;border:1px solid var(--g2);padding:5px 12px;cursor:pointer;font-family:var(--Fb);font-size:12px;font-weight:500;color:var(--g6);transition:all .15s}
+.tbtn.on{border-color:var(--red);color:var(--red);background:#fff5f5}
+.tdot{width:8px;height:8px;border-radius:50%;background:var(--g3);transition:background .2s;flex-shrink:0}
+.tbtn.on .tdot{background:var(--red)}
 
-/* SCOPE INFO */
-.scope-info{background:var(--gray-100);border:1px solid var(--gray-200);border-left:3px solid var(--gray-400);padding:9px 13px;margin-bottom:14px;font-size:12px;color:var(--gray-700);line-height:1.6;display:none}
-.scope-info.visible{display:block}
+.leg-row{display:flex;gap:18px;flex-wrap:wrap;margin-bottom:12px;align-items:center}
+.li{display:flex;align-items:center;gap:6px;font-size:11px;color:var(--g6)}
+.lsq{width:10px;height:10px;flex-shrink:0;border-radius:1px}
+.leg-note{font-size:10px;color:var(--g4);font-style:italic;margin-left:2px}
 
-/* STATS */
-.stats-grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:10px;margin-bottom:16px}
-.stat-card{background:var(--white);border:1px solid var(--gray-200);padding:13px 14px}
-.stat-card.hl{border-left:3px solid var(--red);padding-left:11px}
-.stat-label{font-size:10px;font-weight:500;letter-spacing:1px;text-transform:uppercase;color:var(--gray-500);margin-bottom:5px}
-.stat-value{font-size:20px;font-weight:500;color:var(--black);line-height:1;margin-bottom:3px;font-family:var(--font-d)}
-.stat-sub{font-size:11px;color:var(--gray-500)}
+.vtabs{display:flex;border-bottom:2px solid var(--g2);margin-bottom:14px}
+.vtab{background:transparent;border:none;font-family:var(--Fb);font-size:12px;font-weight:500;color:var(--g4);padding:8px 16px;cursor:pointer;border-bottom:2px solid transparent;margin-bottom:-2px;transition:all .15s}
+.vtab.on{color:var(--black);border-bottom-color:var(--black)}
 
-/* MERGER CALLOUT */
-.merger-callout{background:var(--merged);padding:16px 20px;margin-bottom:16px;display:none}
-.merger-callout.on{display:block}
-.merger-callout h3{font-family:var(--font-d);font-size:16px;color:#fff;margin-bottom:6px}
-.merger-callout p{font-size:13px;color:rgba(255,255,255,.75);line-height:1.7;max-width:700px}
-.merger-stats{display:flex;gap:20px;margin-top:12px;flex-wrap:wrap}
-.m-stat .val{font-family:var(--font-d);font-size:20px;color:#fff;font-weight:600;line-height:1}
-.m-stat .lbl{font-size:10px;color:rgba(255,255,255,.6);margin-top:2px;letter-spacing:.5px;text-transform:uppercase}
+.panel{background:var(--white);border:1px solid var(--g2)}
+.ph{display:flex;justify-content:space-between;align-items:baseline;padding:12px 14px 10px;border-bottom:1px solid var(--g2);flex-wrap:wrap;gap:6px}
+.pt{font-size:13px;font-weight:500}
+.pn{font-size:11px;color:var(--g4)}
 
-/* PANEL */
-.panel{background:var(--white);border:1px solid var(--gray-200);padding:16px 16px 12px;margin-bottom:16px}
-.panel-header{display:flex;justify-content:space-between;align-items:baseline;margin-bottom:12px;padding-bottom:10px;border-bottom:1px solid var(--gray-200)}
-.panel-title{font-size:13px;font-weight:500;color:var(--black)}
-.panel-note{font-size:11px;color:var(--gray-500)}
-.legend-row{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:10px}
-.leg-item{display:flex;align-items:center;gap:4px;font-size:11px;color:var(--gray-700)}
-.leg-sq{width:9px;height:9px;flex-shrink:0}
-
-/* YOY TOGGLE */
-.yoy-toggle-bar{display:none;background:var(--gray-100);border:1px solid var(--gray-200);padding:10px 14px;margin-bottom:12px;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:10px}
-.yoy-toggle-bar.visible{display:flex}
-.yoy-label{font-size:12px;color:var(--gray-700)}
-.yoy-label strong{color:var(--black)}
-.yoy-btn{font-family:var(--font-b);font-size:12px;padding:5px 12px;border:1px solid var(--gray-300);background:var(--white);color:var(--gray-700);cursor:pointer;transition:all var(--ease)}
-.yoy-btn.active{background:var(--black);color:#fff;border-color:var(--black)}
-.yoy-btn-group{display:flex;gap:5px}
-
-/* TABLE */
-.table-wrap{overflow-x:auto}
-table{width:100%;border-collapse:collapse;font-size:13px}
-thead{background:var(--gray-100)}
-th{padding:8px 10px;text-align:left;font-size:10px;font-weight:500;letter-spacing:1px;text-transform:uppercase;color:var(--gray-500);border-bottom:2px solid var(--gray-200);white-space:nowrap;cursor:pointer;user-select:none}
+.tw{overflow-x:auto}
+table{width:100%;border-collapse:collapse;font-size:12px}
+thead{background:var(--g1)}
+th{padding:7px 10px;text-align:left;font-size:10px;font-weight:500;letter-spacing:1px;text-transform:uppercase;color:var(--g4);border-bottom:2px solid var(--g2);white-space:nowrap;cursor:pointer;user-select:none}
 th:hover{color:var(--black)}
-th.sorted{color:var(--black)}
-th .arr{font-size:9px;margin-left:2px;opacity:.5}
-th.sorted .arr{opacity:1}
-td{padding:8px 10px;border-bottom:1px solid var(--gray-200);vertical-align:middle}
+th.srt{color:var(--black)}
+.arr{font-size:9px;margin-left:2px;opacity:.5}
+th.srt .arr{opacity:1}
+td{padding:8px 10px;border-bottom:1px solid var(--g2);vertical-align:middle}
 tr:last-child td{border-bottom:none}
-tbody tr:hover td{background:var(--gray-100)}
-.name-cell{display:flex;align-items:center;gap:7px}
-.color-dot{width:9px;height:9px;border-radius:50%;flex-shrink:0}
-.b-name{font-weight:500;font-size:13px;color:var(--black)}
-.merged-badge{font-size:9px;background:var(--merged);color:#fff;padding:2px 5px;letter-spacing:.5px;text-transform:uppercase;margin-left:4px;vertical-align:middle}
-.q-verified{font-size:9px;background:#EAF3DE;color:#27500A;padding:2px 6px;margin-left:3px;vertical-align:middle;font-weight:500}
-.q-estimated{font-size:9px;background:#FAEEDA;color:#633806;padding:2px 6px;margin-left:3px;vertical-align:middle;font-weight:500}
-.type-tag{font-size:10px;padding:2px 7px;font-weight:500;white-space:nowrap}
-.t-franchise{background:#EAF3DE;color:#27500A}
-.t-independent{background:#E6F1FB;color:#0C447C}
-.t-merged{background:#FCEBEB;color:#791F1F}
-.bar-wrap{display:flex;align-items:center;gap:6px;min-width:90px}
-.bar-track{flex:1;height:5px;background:var(--gray-200);overflow:hidden}
-.bar-fill{height:100%;transition:width .4s ease}
-.num{font-size:13px;white-space:nowrap;color:var(--black)}
+tbody tr:hover td{background:var(--g1)}
+.rn{font-size:11px;color:var(--g4);text-align:right;width:24px}
+.nc{display:flex;align-items:center;gap:7px;flex-wrap:wrap}
+.dot{width:9px;height:9px;border-radius:50%;flex-shrink:0}
+.bn{font-weight:500}
+.chip{font-size:9px;padding:2px 6px;font-weight:500;margin-left:4px;vertical-align:middle;white-space:nowrap}
+.cb{background:var(--blue-lt);color:var(--blue-dk)}
+.cf{background:var(--green-lt);color:var(--green-dk)}
+.cm{background:#fff0f0;color:#7a1515}
+.bw{display:flex;align-items:center;gap:5px;min-width:90px}
+.bt{flex:1;height:4px;background:var(--g2);overflow:hidden}
+.bf{height:100%}
+.nm{white-space:nowrap}
+.gp{color:var(--green);font-weight:500}
+.gn{color:#a01717;font-weight:500}
+.ga{color:var(--g4)}
+.tip{display:inline-flex;align-items:center;justify-content:center;width:13px;height:13px;border-radius:50%;border:1px solid var(--g2);font-size:9px;color:var(--g4);cursor:help;margin-left:3px;flex-shrink:0}
+.tip:hover{background:var(--g2)}
+.mr td{background:#fff8f8}
+.mr .bn{color:#9b1d1d}
 
-/* YOY CHANGE CELLS */
-.yoy-cell{display:flex;align-items:center;gap:5px;white-space:nowrap}
-.yoy-arrow{font-size:11px;font-weight:500}
-.yoy-pos{color:var(--up)}
-.yoy-neg{color:var(--down)}
-.yoy-flat{color:var(--gray-500)}
-.rank-change{font-size:11px;padding:1px 5px;font-weight:500}
-.rank-up{background:var(--up-bg);color:var(--up)}
-.rank-down{background:var(--down-bg);color:var(--down)}
-.rank-new{background:#E6F1FB;color:#0C447C;font-size:9px;padding:2px 5px}
-.rank-same{color:var(--gray-500)}
-.g-pos{color:var(--up);font-weight:500}
-.g-neg{color:var(--down);font-weight:500}
-.g-na{color:var(--gray-500)}
-.rank-n{font-size:12px;font-weight:500;color:var(--gray-500);width:18px;text-align:right}
-.tip{display:inline-flex;align-items:center;justify-content:center;width:13px;height:13px;border-radius:50%;border:1px solid var(--gray-300);font-size:9px;color:var(--gray-500);cursor:help;margin-left:3px;vertical-align:middle;flex-shrink:0}
+.yoy-banner{background:var(--black);padding:16px 20px;margin-bottom:14px;border-left:3px solid var(--red)}
+.yoy-hl{font-family:var(--Fd);font-size:17px;color:#fff;font-weight:600;margin-bottom:8px}
+.yoy-bl{display:flex;flex-wrap:wrap;gap:14px}
+.yoy-b{font-size:12px;color:#888;display:flex;align-items:flex-start;gap:6px;max-width:340px}
+.yoy-b::before{content:'◆';font-size:8px;color:var(--red);margin-top:4px;flex-shrink:0}
+.yoy-b strong{color:#ccc;font-weight:500}
+.movers{display:grid;grid-template-columns:repeat(auto-fit,minmax(190px,1fr));gap:12px;margin-bottom:14px}
+.mc{background:var(--white);border:1px solid var(--g2);padding:14px}
+.mc h4{font-size:10px;font-weight:500;letter-spacing:1.2px;text-transform:uppercase;color:var(--g4);margin-bottom:10px}
+.mr2{display:flex;justify-content:space-between;align-items:baseline;padding:5px 0;border-bottom:1px solid var(--g1);font-size:12px}
+.mr2:last-child{border-bottom:none}
+.mn{font-weight:500}
+.mv-p{color:var(--green);font-weight:500}
+.mv-n{color:#a01717;font-weight:500}
 
-/* METHODOLOGY */
-.method-section{background:var(--white);border:1px solid var(--gray-200);padding:18px 20px;margin-bottom:16px}
-.method-section h2{font-family:var(--font-d);font-size:16px;font-weight:600;margin-bottom:12px;padding-bottom:9px;border-bottom:1px solid var(--gray-200)}
-.method-grid{display:grid;grid-template-columns:1fr 1fr;gap:14px}
-.method-item h3{font-size:11px;font-weight:500;text-transform:uppercase;letter-spacing:.8px;color:var(--gray-500);margin-bottom:4px}
-.method-item p{font-size:13px;color:var(--gray-700);line-height:1.7}
-.method-item strong{color:var(--black);font-weight:500}
+.fn{font-size:11px;color:var(--g4);line-height:1.75;padding:12px 14px;background:var(--white);border:1px solid var(--g2);border-top:none}
+.fn strong{color:var(--g6);font-weight:500}
+.fn a{color:var(--g4);text-decoration:underline}
+.fn .src-note{display:inline-block;background:var(--g1);border:1px solid var(--g2);font-size:10px;padding:1px 6px;margin:0 2px;vertical-align:middle}
 
-/* UPDATE GUIDE */
-.update-guide{background:#0f0f0f;border:1px solid #333;padding:20px 22px;margin-bottom:16px}
-.update-guide h2{font-family:var(--font-d);font-size:16px;color:#fff;margin-bottom:14px;display:flex;align-items:center;gap:10px}
-.update-guide h2 span{font-size:11px;background:var(--red);color:#fff;padding:2px 8px;letter-spacing:.5px;text-transform:uppercase;font-family:var(--font-b)}
-.update-steps{display:grid;grid-template-columns:1fr 1fr;gap:12px}
-.update-step{background:#1a1a1a;padding:13px 15px;border-left:2px solid #444}
-.update-step.important{border-left-color:var(--red)}
-.update-step h3{font-size:12px;font-weight:500;color:#fff;margin-bottom:5px}
-.update-step p{font-size:12px;color:#888;line-height:1.6}
-.update-step code{font-family:monospace;font-size:11px;background:#111;color:#4fc3f7;padding:1px 5px}
-
-/* FOOTER */
-.source-bar{background:var(--white);border-top:1px solid var(--gray-200);padding:14px 32px;font-size:11px;color:var(--gray-500);line-height:1.8}
-.source-bar a{color:var(--gray-500);text-decoration:underline}
-.source-bar strong{color:var(--gray-700)}
-
-@media(max-width:700px){
-  .container,.hero,.merger-alert,.source-bar{padding-left:16px;padding-right:16px}
-  .stats-grid{grid-template-columns:repeat(2,minmax(0,1fr))}
-  .story-bullets{grid-template-columns:1fr}
-  .update-steps,.method-grid{grid-template-columns:1fr}
-  .merger-toggle-wrap{margin-left:0}
-  .controls-bar{flex-direction:column;align-items:flex-start}
+@media(max-width:640px){
+  .hero,.wrap{padding-left:16px;padding-right:16px}
+  .merger-strip{padding-left:16px;padding-right:16px}
+  .controls{flex-direction:column;align-items:flex-start}
+  .merger-toggle{margin-left:0}
 }
 </style>
 </head>
 <body>
 
-<header class="site-header">
+<nav class="nav">
   <a class="logo" href="https://inman.com" target="_blank">
-    <div class="logo-mark">I</div>
+    <div class="logo-box">I</div>
     <span class="logo-name">Inman</span>
-    <span class="logo-sep">/</span>
-    <span class="logo-section">Data</span>
+    <span class="logo-sec">/ Data</span>
   </a>
-  <div class="header-right">
-    <div class="new-data-pill" id="newDataPill">2026 data live</div>
-    <span class="header-tag" id="headerTag">2025 Rankings</span>
-  </div>
-</header>
+  <span class="nav-pill">2026 data live</span>
+</nav>
 
 <section class="hero">
-  <div class="hero-eyebrow">Brokerage Power Rankings</div>
-  <h1 id="heroTitle">Who dominates residential real estate in 2025</h1>
-  <p class="hero-sub" id="heroSub">An interactive comparison of the nation's largest brokerages by sales volume, transaction sides, agent count, and implied average price — plus the seismic Compass–Anywhere merger that closed January 9, 2026.</p>
-  <div class="hero-meta">
-    <span>Primary source: RealTrends Verified (brokerage profiles)</span>
-    <span>T3 Sixty · Company SEC filings</span>
-    <span id="dataFreshness" class="data-freshness data-pending">2024 production data · Updated March 2026</span>
+  <div class="hero-inner">
+    <div class="eyebrow">2025 Production — Published April 2026</div>
+    <h1>Who dominates residential real estate in 2025</h1>
+    <p class="hero-sub">An interactive comparison of the nation's largest brokerages and franchise networks — by sales volume, transaction sides, agent count, and implied average price. Includes the seismic Compass–Anywhere merger that closed January 9, 2026.</p>
+    <div class="hero-meta">
+      <span><span class="sbadge">RealTrends Verified 2026</span> Single brokerage profiles</span>
+      <span><span class="sbadge">T3 Sixty 2026</span> Franchise network totals</span>
+      <span><span class="sbadge">SEC / press releases</span> Agent counts where noted</span>
+      <span>All data used with permission · properly attributed per row</span>
+    </div>
   </div>
 </section>
 
-<div class="merger-alert" style="background:#1a0a0a;border-left:3px solid var(--red);margin:18px 32px 0;padding:13px 17px;display:flex;gap:13px">
-  <div style="color:var(--red);font-size:17px;flex-shrink:0">&#9670;</div>
-  <div>
-    <h3 style="font-size:13px;font-weight:500;color:#fff;margin-bottom:3px">Compass acquires Anywhere Real Estate — January 9, 2026</h3>
-    <p style="font-size:13px;color:#999;line-height:1.6">Creates <strong style="color:#ccc">Compass International Holdings</strong> with ~340,000 global real estate professionals and $415B in combined 2024 production. Use the merger toggle to see the post-merger rankings picture.</p>
+<div class="merger-strip">
+  <div class="merger-inner">
+    <h3>◆ Compass acquires Anywhere Real Estate — January 9, 2026</h3>
+    <p>Creates <strong>Compass International Holdings</strong> with ~490,000 combined 2025 transaction sides and $455B in combined 2025 production. Use the merger toggle to see the post-merger view.</p>
+    <div class="mstats">
+      <div class="mstat"><div class="v">$455B</div><div class="l">combined 2025 volume</div></div>
+      <div class="mstat"><div class="v">490K+</div><div class="l">combined 2025 sides</div></div>
+      <div class="mstat"><div class="v">~86K</div><div class="l">combined agents</div></div>
+    </div>
   </div>
 </div>
 
-<div class="container">
+<div class="wrap">
 
-  <!-- STORY BANNER — auto-populates when NEW_DATA is filled in -->
-  <div class="story-banner" id="storyBanner">
-    <div class="story-banner-label">April 10, 2026 — RealTrends 2026 data release</div>
-    <h2 id="storyHeadline">Loading year-over-year story...</h2>
-    <div class="story-bullets" id="storyBullets"></div>
-  </div>
-
-  <!-- MERGER CALLOUT -->
-  <div class="merger-callout" id="mergerCallout">
-    <h3>Combined Compass + Anywhere Advisors brokerage production</h3>
-    <p>Volume and sides are the arithmetic sum of the two firms' 2024 RealTrends Verified brokerage profiles. The ~340K agent figure is globally-reported "real estate professionals" — not directly comparable to "active licensed agents" used for other rows.</p>
-    <div class="merger-stats">
-      <div class="m-stat"><div class="val">$414.9B</div><div class="lbl">combined volume</div></div>
-      <div class="m-stat"><div class="val">475,513</div><div class="lbl">combined sides</div></div>
-      <div class="m-stat"><div class="val">~340K</div><div class="lbl">global professionals (est.)</div></div>
+<div class="controls">
+  <div><span class="cl">View</span>
+    <div class="seg" id="vSeg">
+      <button class="on" onclick="setView('chart')">Chart</button>
+      <button onclick="setView('table')">Table</button>
+      <button onclick="setView('yoy')">Year over year</button>
     </div>
   </div>
-
-  <!-- CONTROLS -->
-  <div class="controls-bar">
-    <div class="ctrl-group">
-      <div class="ctrl-label">View</div>
-      <div class="seg" id="viewSeg">
-        <button class="active" onclick="setView('chart')">Chart</button>
-        <button onclick="setView('table')">Table</button>
-        <button onclick="setView('changes')" id="changesBtn" style="display:none">What changed</button>
-      </div>
-    </div>
-    <div class="ctrl-group">
-      <div class="ctrl-label">Metric</div>
-      <div class="seg" id="metricSeg">
-        <button class="active" onclick="setMetric('volume')">Volume</button>
-        <button onclick="setMetric('sides')">Sides</button>
-        <button onclick="setMetric('avgPrice')">Implied avg price</button>
-        <button onclick="setMetric('agents')">Active agents</button>
-      </div>
-    </div>
-    <div class="ctrl-group">
-      <div class="ctrl-label">Filter by type</div>
-      <div class="pill-row">
-        <button class="pill active" id="pill-all" onclick="setFilter('all')">All</button>
-        <button class="pill" id="pill-franchise" onclick="setFilter('franchise')">Franchise networks</button>
-        <button class="pill" id="pill-independent" onclick="setFilter('independent')">Independents</button>
-      </div>
-    </div>
-    <div class="merger-toggle-wrap">
-      <div class="ctrl-label">Compass + Anywhere merger</div>
-      <label class="merger-switch">
-        <input type="checkbox" id="mergerToggle" onchange="toggleMerger(this.checked)">
-        <div class="switch-track"><div class="switch-thumb"></div></div>
-        <span class="merger-switch-text" id="mergerLabel">Pre-merger (2024 data)</span>
-      </label>
+  <div><span class="cl">Metric</span>
+    <div class="seg" id="mSeg">
+      <button class="on" onclick="setMetric('volume')">Volume</button>
+      <button onclick="setMetric('sides')">Sides</button>
+      <button onclick="setMetric('avgPrice')">Avg price</button>
+      <button onclick="setMetric('agents')">Agents</button>
     </div>
   </div>
-
-  <!-- SCOPE INFO -->
-  <div class="scope-info" id="scopeInfo"></div>
-
-  <!-- YOY TOGGLE BAR — shown when new data is loaded -->
-  <div class="yoy-toggle-bar" id="yoyBar">
-    <span class="yoy-label">Year-over-year comparison active — <strong>2025 vs 2024 production</strong></span>
-    <div class="yoy-btn-group">
-      <button class="yoy-btn active" onclick="setYoy('current')" id="yoy-current">2025 data</button>
-      <button class="yoy-btn" onclick="setYoy('prior')" id="yoy-prior">2024 data</button>
-      <button class="yoy-btn" onclick="setYoy('delta')" id="yoy-delta">Show change</button>
+  <div><span class="cl">Filter</span>
+    <div class="seg" id="fSeg">
+      <button class="on" onclick="setFilter('all')">All</button>
+      <button onclick="setFilter('franchise')">Franchise networks</button>
+      <button onclick="setFilter('brokerage')">Brokerages</button>
     </div>
   </div>
-
-  <!-- STATS -->
-  <div class="stats-grid" id="statsRow"></div>
-
-  <!-- CHART PANEL -->
-  <div class="panel" id="chartPanel">
-    <div class="panel-header">
-      <span class="panel-title" id="chartTitle">Sales volume by brokerage</span>
-      <span class="panel-note" id="chartNote">2024 production · RealTrends Verified 2025</span>
-    </div>
-    <div class="legend-row" id="legendRow"></div>
-    <div style="position:relative;width:100%" id="chartWrap"><canvas id="mainChart"></canvas></div>
+  <div class="merger-toggle">
+    <button class="tbtn" id="mergeBtn" onclick="toggleMerger()">
+      <span class="tdot"></span>Compass + Anywhere merger
+    </button>
   </div>
+</div>
 
-  <!-- TABLE PANEL -->
-  <div class="panel" id="tablePanel" style="display:none">
-    <div class="panel-header">
-      <span class="panel-title">Full comparison — click headers to sort</span>
-      <span class="panel-note" id="tableNote">2024 production · RealTrends Verified 2025 brokerage profiles</span>
+<div class="leg-row">
+  <span class="li"><span class="lsq" style="background:var(--blue)"></span>Single brokerage<span class="leg-note">RealTrends Verified 2026</span></span>
+  <span class="li"><span class="lsq" style="background:var(--green)"></span>Franchise network<span class="leg-note">T3 Sixty / SEC / press releases</span></span>
+  <span class="li"><span class="lsq" style="background:#9b1d1d"></span>Post-merger combined<span class="leg-note">merger toggle</span></span>
+</div>
+
+<div class="vtabs">
+  <button class="vtab on" id="vt-chart" onclick="setView('chart')">Chart</button>
+  <button class="vtab" id="vt-table" onclick="setView('table')">Table</button>
+  <button class="vtab" id="vt-yoy" onclick="setView('yoy')">Year over year</button>
+</div>
+
+<!-- CHART -->
+<div id="pChart">
+  <div class="panel">
+    <div class="ph">
+      <span class="pt" id="cTitle">Sales volume — 2025 production</span>
+      <span class="pn" id="cNote"></span>
     </div>
-    <div class="table-wrap">
+    <div style="padding:12px 14px 10px;position:relative" id="cWrap"><canvas id="mainC"></canvas></div>
+  </div>
+  <div class="fn" id="cFoot"></div>
+</div>
+
+<!-- TABLE -->
+<div id="pTable" style="display:none">
+  <div class="panel">
+    <div class="ph">
+      <span class="pt">Full rankings — click headers to sort</span>
+      <span class="pn">2025 production</span>
+    </div>
+    <div class="tw">
       <table>
-        <thead>
-          <tr>
-            <th style="width:28px">#</th>
-            <th onclick="sortBy('name')" id="th-name">Brokerage <span class="arr">↕</span></th>
-            <th onclick="sortBy('type')" id="th-type">Type <span class="arr">↕</span></th>
-            <th onclick="sortBy('volume')" id="th-volume" class="sorted">Volume <span class="arr">↓</span></th>
-            <th onclick="sortBy('sides')" id="th-sides">Sides <span class="arr">↕</span></th>
-            <th onclick="sortBy('avgPrice')" id="th-avgPrice">Implied avg price <span class="arr">↕</span></th>
-            <th onclick="sortBy('agents')" id="th-agents">Active agents <span class="arr">↕</span></th>
-            <th onclick="sortBy('growth5yr')" id="th-growth5yr">5yr sides growth <span class="arr">↕</span></th>
-            <th id="th-yoy" style="display:none">YoY volume <span class="arr">↕</span></th>
-          </tr>
-        </thead>
-        <tbody id="tableBody"></tbody>
+        <thead><tr>
+          <th style="width:24px">#</th>
+          <th onclick="sb('name')" id="th-name">Name <span class="arr">↕</span></th>
+          <th onclick="sb('type')" id="th-type">Type <span class="arr">↕</span></th>
+          <th onclick="sb('volume')" id="th-volume" class="srt">Volume <span class="arr">↓</span></th>
+          <th onclick="sb('sides')" id="th-sides">Sides <span class="arr">↕</span></th>
+          <th onclick="sb('avgPrice')" id="th-avgPrice">Avg price <span class="arr">↕</span></th>
+          <th onclick="sb('agents')" id="th-agents">Agents <span class="arr">↕</span></th>
+          <th onclick="sb('yoy')" id="th-yoy">YoY vol <span class="arr">↕</span></th>
+        </tr></thead>
+        <tbody id="tbody"></tbody>
       </table>
     </div>
   </div>
-
-  <!-- CHANGES PANEL — shown only when new data loaded -->
-  <div class="panel" id="changesPanel" style="display:none">
-    <div class="panel-header">
-      <span class="panel-title">Year-over-year changes — 2025 vs 2024 production</span>
-      <span class="panel-note">RealTrends Verified 2026 (2025 data) vs RealTrends Verified 2025 (2024 data)</span>
-    </div>
-    <div id="changesContent"></div>
-  </div>
-
-  <!-- METHODOLOGY -->
-  <div class="method-section">
-    <h2>Methodology &amp; definitions</h2>
-    <div class="method-grid">
-      <div class="method-item">
-        <h3>Data scope &amp; vintage</h3>
-        <p>All production figures reflect <strong>2024 closed residential transactions</strong> as reported in RealTrends Verified 2025 brokerage profiles (published April 2025). Each row corresponds to a single RealTrends Verified brokerage profile — not a franchise network total, except KW and RE/MAX which use T3 Sixty / company press release totals and are labeled accordingly.</p>
-      </div>
-      <div class="method-item">
-        <h3>Sales volume &amp; sides</h3>
-        <p>Volume = total dollar value of residential transactions closed during the year (<strong>not company revenue</strong>). Sides = count of buyer-side and seller-side representation; one sale may contribute 1 or 2 sides. Both are as reported to RealTrends Verified by each brokerage.</p>
-      </div>
-      <div class="method-item">
-        <h3>Implied average price</h3>
-        <p>A <strong>derived estimate only</strong>, calculated as: Volume ÷ (Sides ÷ 2). Assumes two sides per transaction. Results vary where "sides" are defined differently across firms. Intended for relative comparison, not as an audited statistic.</p>
-      </div>
-      <div class="method-item">
-        <h3>Active agent count</h3>
-        <p><span class="q-verified">RT verified</span> = RealTrends "active licensed agents" from brokerage profiles. <span class="q-estimated">estimated</span> = company SEC filings or press releases; definitions vary. The merged Compass + Anywhere ~340K figure is globally-reported "real estate professionals" — <strong>not comparable</strong> to active licensed agents.</p>
-      </div>
-      <div class="method-item">
-        <h3>Merger view</h3>
-        <p>Replaces separate Compass and Anywhere Advisors rows with one combined row. Volume and sides = arithmetic sum of 2024 RealTrends brokerage profiles ($231.04B + $183.81B; 228,785 + 246,728 sides). Agent count is globally-reported "professionals" per company/media sources.</p>
-      </div>
-      <div class="method-item">
-        <h3>Rights &amp; attribution</h3>
-        <p>Data sourced from publicly available RealTrends Verified brokerage profiles, T3 Sixty press releases, and company SEC filings. Inman News is a sister publication within HW Media. Figures should be verified against primary sources before commercial use.</p>
-      </div>
-    </div>
-  </div>
-
-  <!-- UPDATE GUIDE — editorial team instructions -->
-  <div class="update-guide">
-    <h2>How to update on April 10 <span>editorial guide</span></h2>
-    <div class="update-steps">
-      <div class="update-step important">
-        <h3>Step 1 — Add new data (5 min)</h3>
-        <p>Find <code>NEW_DATA</code> near the top of the script block. Fill in each brokerage's 2025 production figures from the RealTrends Verified 2026 release. Leave <code>null</code> for any firms not yet published.</p>
-      </div>
-      <div class="update-step important">
-        <h3>Step 2 — Flip the live flag (30 sec)</h3>
-        <p>Change <code>DATA_LIVE: false</code> to <code>DATA_LIVE: true</code>. This activates the "What changed" tab, the YoY toggle bar, story banner, and green "2026 data live" pill in the header.</p>
-      </div>
-      <div class="update-step">
-        <h3>Step 3 — Review auto-generated story bullets</h3>
-        <p>The story banner auto-computes the biggest volume mover, biggest sides change, largest rank jump, and any new entrants. Review for accuracy and optionally override the <code>STORY_OVERRIDE</code> text field for a custom headline.</p>
-      </div>
-      <div class="update-step">
-        <h3>Step 4 — Commit &amp; publish</h3>
-        <p>Push to GitHub. The page self-updates. The "What changed" tab becomes the story hook; the main chart and table update to show 2025 data with YoY context baked in.</p>
-      </div>
-    </div>
-  </div>
-
+  <div class="fn" id="tFoot"></div>
 </div>
 
-<div class="source-bar">
-  <strong>Sources:</strong>
-  <strong>Volume &amp; sides:</strong> <a href="https://www.realtrends.com/ranking/" target="_blank">RealTrends Verified 2025 brokerage profiles</a> (2024 production). &nbsp;
-  <strong>KW volume/sides:</strong> T3 Sixty 2025 Real Estate Almanac via KW press release. &nbsp;
-  <strong>Active licensed agents:</strong> RealTrends Verified brokerage profiles where verified; SEC 10-K for eXp (FY2024: 82,980) and Compass (~33K+ agents on platform). &nbsp;
-  <strong>5yr growth:</strong> RealTrends Verified 2025 / <a href="https://www.housingwire.com/articles/real-estate-brokerage-market-share-realtrends-2024/" target="_blank">HousingWire</a>. &nbsp;
-  <strong>Merger:</strong> Compass IR press release Jan 9, 2026 · SEC Form 8-K. &nbsp;
-  <a href="https://inman.com" target="_blank">Inman.com</a> for ongoing coverage.
+<!-- YOY -->
+<div id="pYoy" style="display:none">
+  <div class="yoy-banner">
+    <div class="yoy-hl" id="yHL"></div>
+    <div class="yoy-bl" id="yBL"></div>
+  </div>
+  <div class="movers" id="movers"></div>
+  <div class="panel">
+    <div class="ph">
+      <span class="pt">Year-over-year volume change</span>
+      <span class="pn">2025 vs 2024 production</span>
+    </div>
+    <div style="position:relative;padding:12px 14px 10px" id="yWrap"><canvas id="yoyC"></canvas></div>
+  </div>
+  <div class="fn">
+    <strong>Year-over-year:</strong> 2025 from RealTrends Verified 2026 brokerage profiles / T3 Sixty 2026. 2024 baseline from RealTrends Verified 2025 / T3 Sixty 2025. Franchise network YoY reflects aggregate network figures from T3 Sixty and company press releases. Rows without 2024 comparables are excluded from YoY views.
+  </div>
+</div>
+
 </div>
 
 <script>
-/* ═══════════════════════════════════════════════════════
-   CURRENT DATA — RealTrends Verified 2025 (2024 production)
-   Source: RealTrends Verified brokerage profiles, April 2025
-   ═══════════════════════════════════════════════════════ */
-const CURRENT_DATA = [
-  { id:'kw',          name:'Keller Williams',        type:'franchise',   volume:370,    sides:807323, agents:145000, growth5yr:29.9,  color:'#b31111', agentVerified:false, note:'Franchise network total — T3 Sixty / KW press release.' },
-  { id:'anywhere',    name:'Anywhere Advisors',       type:'franchise',   volume:183.81, sides:246728, agents:52900,  growth5yr:-12,   color:'#2e6b47', agentVerified:true,  note:'Brokerage-level production. Owned brokerage arm only.' },
-  { id:'homeservices',name:'HomeServices of America', type:'franchise',   volume:136.64, sides:224485, agents:37745,  growth5yr:-3.2,  color:'#5a3472', agentVerified:true,  note:'Brokerage profile. BHHS franchise network is separate.' },
-  { id:'remax',       name:'RE/MAX',                  type:'franchise',   volume:111.6,  sides:383039, agents:146000, growth5yr:-8,    color:'#1a3a8f', agentVerified:false, note:'Franchise network. Agent count ~146K global from SEC filing.' },
-  { id:'compass',     name:'Compass',                 type:'independent', volume:231.04, sides:228785, agents:33000,  growth5yr:188.9, color:'#0f0f0f', agentVerified:false, note:'RT brokerage profile. SEC 10-K: ~33K+ agents on platform.' },
-  { id:'exp',         name:'eXp Realty',              type:'independent', volume:152.66, sides:350119, agents:82980,  growth5yr:274.4, color:'#c8720a', agentVerified:false, note:'RT brokerage profile (US). SEC 10-K global agents: 82,980.' },
-  { id:'hanna',       name:'Hanna Holdings',          type:'independent', volume:33.74,  sides:92154,  agents:11994,  growth5yr:null,  color:'#4a4a4a', agentVerified:true,  note:'#1 private independent by sides per RealTrends 2025.' },
-  { id:'real',        name:'The Real Brokerage',      type:'independent', volume:42.44,  sides:90298,  agents:24140,  growth5yr:null,  color:'#c0392b', agentVerified:true,  note:'Strong alignment between RT profile and company IR.' },
-  { id:'elliman',     name:'Douglas Elliman',         type:'independent', volume:36.39,  sides:21779,  agents:6242,   growth5yr:null,  color:'#1a4a6b', agentVerified:true,  note:'Luxury-focused. High implied avg price reflects premium markets.' },
-  { id:'lpt',         name:'LPT Realty',              type:'independent', volume:13.86,  sides:36369,  agents:14664,  growth5yr:null,  color:'#0f6e56', agentVerified:true,  note:'Fast-growing independent.' },
+/* ══════════════════════════════════════════════════════════════
+   DATA — April 2026
+   All data used with permission of RealTrends Verified and T3 Sixty.
+   ══════════════════════════════════════════════════════════════ */
+
+const DATA = [
+  /* ── FRANCHISE NETWORKS ─────────────────────────────────────
+     T3 Sixty 2026 Real Estate Almanac (KW) + company/SEC sources
+     Network totals aggregate all independently owned affiliated
+     offices under one brand. Each office has its own P&L;
+     the franchisor earns royalties, not commissions.
+  ─────────────────────────────────────────────────────────── */
+  {
+    id:'kw', name:'Keller Williams', type:'franchise', color:'#1a6b3a',
+    volume:370.7, sides:796658, agents:136511,
+    vol24:370,   sides24:null,
+    src:'T3 Sixty 2026 Real Estate Almanac; KW press release April 8 2026. US-based figures. KW ranked #1 franchise by T3 Sixty for 9th consecutive year. Stone Point Capital partnership March 2025.',
+    srcLabel:'T3 Sixty 2026 / KW PR'
+  },
+  {
+    id:'are', name:'Anywhere Real Estate', type:'franchise', color:'#2e7d32',
+    volume:null, sides:950000, agents:311900,
+    vol24:null,  sides24:980000,
+    src:'Anywhere Real Estate Q2 2025 investor presentation: ~950K US annual sides across all brands (CB, Sotheby\'s, C21, ERA, BH&G, Corcoran). ~311,900 worldwide sales agents. Full-year 2025 enterprise volume not separately published prior to Compass merger close Jan 9 2026. Anywhere Advisors (owned brokerage only) figures are listed separately in the brokerage section.',
+    srcLabel:'Anywhere IR / Q2 2025 investor deck'
+  },
+  {
+    id:'remax', name:'RE/MAX', type:'franchise', color:'#388e3c',
+    volume:null, sides:null, agents:148660,
+    vol24:null,  sides24:null,
+    src:'RE/MAX Holdings SEC 10-K / Q4 2025 earnings (Feb 19 2026). Total global agent count 148,660 (+1.4% YoY); US+Canada 72,977 (-4.6%); outside US+Canada 75,683 (+7.9%). Network-wide transaction volume/sides not reported in SEC filings.',
+    srcLabel:'RMAX SEC 10-K / Q4 2025 earnings'
+  },
+
+  /* ── SINGLE BROKERAGES ───────────────────────────────────────
+     RealTrends Verified 2026 brokerage profiles (2025 production)
+     Each row = one licensed brokerage entity, independently verified.
+  ─────────────────────────────────────────────────────────── */
+  {
+    id:'compass', name:'Compass', type:'brokerage', color:'#185FA5',
+    volume:262.23, sides:245173, agents:36990,
+    vol24:231.04,  sides24:228785,
+    src:'RealTrends Verified 2026 brokerage profile. Includes 2025 full-year production from @properties, Ansley, Cottingham Chalk, PorchLight, Colorado Homes Realty, and Washington Fine Properties — all acquired by Compass during 2025. Merger with Anywhere closed Jan 9 2026.',
+    srcLabel:'RealTrends Verified 2026'
+  },
+  {
+    id:'anywhere', name:'Anywhere Advisors', type:'brokerage', color:'#1976D2',
+    volume:192.76, sides:245250, agents:48735,
+    vol24:183.81,  sides24:246728,
+    src:'RealTrends Verified 2026 brokerage profile. Owned brokerage arm of Anywhere Real Estate only — does not include CB, Sotheby\'s, C21 or other franchise brands. Final year as standalone entity; acquired by Compass January 9, 2026.',
+    srcLabel:'RealTrends Verified 2026'
+  },
+  {
+    id:'exp', name:'eXp Realty', type:'brokerage', color:'#c8720a',
+    volume:155.56, sides:343091, agents:63410,
+    vol24:152.66,  sides24:350119,
+    src:'RealTrends Verified 2026 brokerage profile. #1 nationally by transaction sides.',
+    srcLabel:'RealTrends Verified 2026'
+  },
+  {
+    id:'real', name:'The Real Brokerage', type:'brokerage', color:'#c0392b',
+    volume:65.22, sides:131047, agents:29122,
+    vol24:42.44,  sides24:90298,
+    src:'RealTrends Verified 2026 brokerage profile.',
+    srcLabel:'RealTrends Verified 2026'
+  },
+  {
+    id:'hanna', name:'Hanna Holdings', type:'brokerage', color:'#4a4a4a',
+    volume:40.26, sides:106868, agents:12093,
+    vol24:33.74,  sides24:92154,
+    src:'RealTrends Verified 2026 brokerage profile. #1 private independent brokerage by sides.',
+    srcLabel:'RealTrends Verified 2026'
+  },
+  {
+    id:'elliman', name:'Douglas Elliman', type:'brokerage', color:'#0C447C',
+    volume:39.76, sides:21338, agents:5759,
+    vol24:36.39,  sides24:21779,
+    src:'RealTrends Verified 2026 brokerage profile. #7 nationally by volume; luxury-focused (#17 by sides reflects high average price per transaction).',
+    srcLabel:'RealTrends Verified 2026'
+  },
 ];
 
-/* ═══════════════════════════════════════════════════════
-   NEW DATA — RealTrends Verified 2026 (2025 production)
-   ┌─────────────────────────────────────────────────────┐
-   │  EDITOR: Fill this in on April 10, 2026             │
-   │  Then set DATA_LIVE: true to activate all YoY views │
-   └─────────────────────────────────────────────────────┘
-   For Compass + Anywhere post-merger: use combined figure
-   or enter as 'compass_m' with merged:true flag.
-   Leave null for any metric not yet published.
-   ═══════════════════════════════════════════════════════ */
-const DATA_LIVE = false;  // ← FLIP TO true ON APRIL 10
-
-const STORY_OVERRIDE = '';  // ← Optional: set a custom headline string, e.g. 'eXp surges past Compass in volume for first time'
-
-const NEW_DATA = [
-  // EXAMPLE FORMAT — replace null values with real figures on April 10:
-  // { id:'kw',          name:'Keller Williams',        type:'franchise',   volume:null, sides:null, agents:null, growth5yr:null, color:'#b31111', agentVerified:false, note:'' },
-  // { id:'anywhere',    name:'Anywhere Advisors',       type:'franchise',   volume:null, sides:null, agents:null, growth5yr:null, color:'#2e6b47', agentVerified:true,  note:'' },
-  // { id:'homeservices',name:'HomeServices of America', type:'franchise',   volume:null, sides:null, agents:null, growth5yr:null, color:'#5a3472', agentVerified:true,  note:'' },
-  // { id:'remax',       name:'RE/MAX',                  type:'franchise',   volume:null, sides:null, agents:null, growth5yr:null, color:'#1a3a8f', agentVerified:false, note:'' },
-  // { id:'compass_m',   name:'Compass + Anywhere',      type:'merged',      volume:null, sides:null, agents:340000, growth5yr:null, color:'#8B1A1A', merged:true, agentVerified:false, note:'Combined post-merger entity.' },
-  // { id:'exp',         name:'eXp Realty',              type:'independent', volume:null, sides:null, agents:null, growth5yr:null, color:'#c8720a', agentVerified:false, note:'' },
-  // { id:'hanna',       name:'Hanna Holdings',          type:'independent', volume:null, sides:null, agents:null, growth5yr:null, color:'#4a4a4a', agentVerified:true,  note:'' },
-  // { id:'real',        name:'The Real Brokerage',      type:'independent', volume:null, sides:null, agents:null, growth5yr:null, color:'#c0392b', agentVerified:true,  note:'' },
-  // { id:'elliman',     name:'Douglas Elliman',         type:'independent', volume:null, sides:null, agents:null, growth5yr:null, color:'#1a4a6b', agentVerified:true,  note:'' },
-  // { id:'lpt',         name:'LPT Realty',              type:'independent', volume:null, sides:null, agents:null, growth5yr:null, color:'#0f6e56', agentVerified:true,  note:'' },
-];
-
-/* ═══════════════════════════════════════════════════════
-   POST-MERGER DATASETS (auto-computed below)
-   ═══════════════════════════════════════════════════════ */
-function buildPostMerger(src) {
-  const rows = src.filter(b => b.id !== 'compass' && b.id !== 'anywhere');
-  const compass = src.find(b => b.id === 'compass');
-  const anywhere = src.find(b => b.id === 'anywhere');
-  if (compass && anywhere && !src.find(b=>b.id==='compass_m')) {
-    rows.unshift({
-      id:'compass_m', name:'Compass + Anywhere', type:'merged', merged:true,
-      volume: +(compass.volume + anywhere.volume).toFixed(2),
-      sides:  compass.sides + anywhere.sides,
-      agents: 340000,
-      growth5yr: null, color:'#8B1A1A',
-      agentVerified: false,
-      note:'Volume/sides = sum of 2024 RealTrends brokerage profiles. Agents = globally-reported professionals (not active licensed agents).'
-    });
-  }
-  return rows;
-}
-
-CURRENT_DATA.forEach(b => { b.avgPrice = Math.round((b.volume*1e9)/(b.sides/2)); });
-const CURRENT_POST = buildPostMerger(CURRENT_DATA);
-CURRENT_POST.forEach(b => { if (!b.avgPrice) b.avgPrice = Math.round((b.volume*1e9)/(b.sides/2)); });
-
-let NEW_PROCESSED = [];
-let NEW_POST = [];
-if (DATA_LIVE && NEW_DATA.length) {
-  NEW_DATA.forEach(b => { if (b.volume && b.sides) b.avgPrice = Math.round((b.volume*1e9)/(b.sides/2)); });
-  NEW_PROCESSED = NEW_DATA;
-  NEW_POST = buildPostMerger(NEW_DATA);
-  NEW_POST.forEach(b => { if (!b.avgPrice && b.volume && b.sides) b.avgPrice = Math.round((b.volume*1e9)/(b.sides/2)); });
-}
-
-/* ═══════════════════════════════════════════════════════
-   STATE
-   ═══════════════════════════════════════════════════════ */
-let currentMetric = 'volume';
-let currentFilter = 'all';
-let currentView   = 'chart';
-let mergerMode    = false;
-let yoyMode       = 'current'; // 'current' | 'prior' | 'delta'
-let sortKey       = 'volume';
-let sortAsc       = false;
-let chartInst     = null;
-
-const METRIC_CFG = {
-  volume:   { chartLabel:'Sales volume ($B)',             fmt:v=>'$'+v.toFixed(1)+'B',        tick:v=>'$'+v+'B',                         acc:b=>b.volume },
-  sides:    { chartLabel:'Transaction sides',              fmt:v=>(v/1000).toFixed(0)+'K',     tick:v=>v>=1000?(v/1000).toFixed(0)+'K':v, acc:b=>b.sides },
-  avgPrice: { chartLabel:'Implied avg price (est.)',       fmt:v=>'$'+(v/1000).toFixed(0)+'K', tick:v=>'$'+(v/1000).toFixed(0)+'K',       acc:b=>b.avgPrice },
-  agents:   { chartLabel:'Active agents / professionals',  fmt:v=>(v/1000).toFixed(0)+'K',     tick:v=>v>=1000?(v/1000).toFixed(0)+'K':v, acc:b=>b.agents },
+const MERGER = {
+  id:'merged', name:'Compass + Anywhere (post-merger)', type:'merged', color:'#9b1d1d',
+  volume:+(262.23+192.76).toFixed(2), sides:245173+245250, agents:36990+48735,
+  vol24:+(231.04+183.81).toFixed(2), sides24:228785+246728,
+  src:'Arithmetic sum of RealTrends Verified 2026 brokerage profiles for Compass and Anywhere Advisors. Merger closed January 9, 2026 (Compass IR / SEC Form 8-K).',
+  srcLabel:'RealTrends Verified 2026 (combined)'
 };
 
-const SCOPE_NOTES = {
-  all:'Showing all brokerage types. <strong>Note:</strong> KW and RE/MAX rows are franchise network totals (T3 Sixty / company data). Other rows are individual brokerage profiles (RealTrends Verified). Cross-type comparisons should account for scope differences.',
-  franchise:'Showing franchise network totals. KW and RE/MAX aggregate all affiliated offices. HomeServices and Anywhere are brokerage-level profiles.',
-  independent:'All rows from RealTrends Verified brokerage profiles — consistent brokerage-level scope.',
+/* ══════════════════════════════════════════════════════════════ STATE */
+let view='chart', metric='volume', filter='all', merger=false;
+let sortKey='volume', sortAsc=false;
+let mainChart=null, yoyChart=null;
+
+const MC={
+  volume:  {label:'Sales volume ($B)',           fmt:v=>'$'+v.toFixed(2)+'B',           tick:v=>'$'+v+'B',                         acc:r=>r.volume},
+  sides:   {label:'Transaction sides',           fmt:v=>Math.round(v).toLocaleString(),  tick:v=>v>=1000?(v/1000).toFixed(0)+'K':v, acc:r=>r.sides},
+  avgPrice:{label:'Implied avg sale price',      fmt:v=>'$'+(v/1000).toFixed(0)+'K',     tick:v=>'$'+(v/1000).toFixed(0)+'K',       acc:r=>r.avgPrice},
+  agents:  {label:'Agent / professional count',  fmt:v=>Math.round(v).toLocaleString(),  tick:v=>v>=1000?(v/1000).toFixed(0)+'K':v, acc:r=>r.agents},
 };
 
-/* ═══════════════════════════════════════════════════════
-   INIT — activate new-data UI if DATA_LIVE
-   ═══════════════════════════════════════════════════════ */
-function initUI() {
-  if (DATA_LIVE) {
-    document.getElementById('newDataPill').classList.add('visible');
-    document.getElementById('headerTag').textContent = '2026 Rankings';
-    document.getElementById('heroTitle').textContent = 'Who dominates residential real estate in 2026';
-    document.getElementById('heroSub').textContent = 'An interactive comparison with year-over-year changes from the April 2026 RealTrends Verified release — plus the Compass–Anywhere merger impact.';
-    document.getElementById('dataFreshness').textContent = '2025 production data · Updated April 2026';
-    document.getElementById('dataFreshness').className = 'data-freshness data-current';
-    document.getElementById('changesBtn').style.display = '';
-    document.getElementById('yoyBar').classList.add('visible');
-    document.getElementById('th-yoy').style.display = '';
-    generateStoryBanner();
-  }
-}
+const FN_RT  = '<strong>Single brokerages</strong> — <a href="https://www.realtrends.com/ranking/best-real-estate-agents-united-states/brokerages-by-volume/" target="_blank">RealTrends Verified 2026</a> brokerage profiles (2025 production). Used with permission.';
+const FN_T3  = '<strong>Keller Williams</strong> — <a href="https://www.realestatealmanac.com/" target="_blank">T3 Sixty 2026 Real Estate Almanac</a> / KW press release April 8 2026. Used with permission.';
+const FN_ARE = '<strong>Anywhere Real Estate</strong> — Q2 2025 investor presentation (sides/agents across all brands). Network-wide volume not published prior to Compass merger close. <strong>RE/MAX</strong> — RMAX SEC 10-K / Q4 2025 earnings (Feb 19 2026); network volume/sides not in SEC filings.';
+const FN_AVG = '<strong>Implied avg price</strong> = Volume ÷ (Sides ÷ 2). Derived estimate, not audited. Franchise network estimates particularly approximate.';
+const FN_SCOPE = '<strong>Scope note:</strong> Franchise networks (green) aggregate all independently owned affiliated offices under one brand — fundamentally different in scale and structure to a single brokerage (blue). Comparisons across types should account for this.';
 
-/* ═══════════════════════════════════════════════════════
-   STORY BANNER — auto-generates from data delta
-   ═══════════════════════════════════════════════════════ */
-function generateStoryBanner() {
-  if (!DATA_LIVE || !NEW_PROCESSED.length) return;
-
-  const banner = document.getElementById('storyBanner');
-  banner.classList.add('visible');
-
-  // Compute deltas
-  const deltas = NEW_PROCESSED.map(n => {
-    const prior = CURRENT_DATA.find(c => c.id === n.id);
-    const volDelta  = prior && n.volume ? n.volume - prior.volume : null;
-    const sidesDelta = prior && n.sides ? n.sides - prior.sides : null;
-    const priorRank  = [...CURRENT_DATA].sort((a,b)=>b.volume-a.volume).findIndex(b=>b.id===n.id)+1;
-    const newRank    = [...NEW_PROCESSED].sort((a,b)=>b.volume-a.volume).findIndex(b=>b.id===n.id)+1;
-    return { ...n, volDelta, sidesDelta, priorRank, newRank, rankChange: priorRank - newRank };
+/* ══════════════════════════════════════════════════════════════ HELPERS */
+function rows(){
+  let d=[...DATA];
+  if(merger){ d=d.filter(r=>r.id!=='compass'&&r.id!=='anywhere'); d.unshift(MERGER); }
+  if(filter==='franchise') d=d.filter(r=>r.type==='franchise');
+  if(filter==='brokerage') d=d.filter(r=>r.type==='brokerage'||r.type==='merged');
+  d.forEach(r=>{
+    r.avgPrice=(r.volume&&r.sides)?Math.round((r.volume*1e9)/(r.sides/2)):null;
+    r.yoy=(r.volume&&r.vol24)?((r.volume-r.vol24)/r.vol24*100):null;
   });
-
-  const biggestVolMover   = deltas.filter(d=>d.volDelta!==null).sort((a,b)=>Math.abs(b.volDelta)-Math.abs(a.volDelta))[0];
-  const biggestSidesMover = deltas.filter(d=>d.sidesDelta!==null).sort((a,b)=>Math.abs(b.sidesDelta)-Math.abs(a.sidesDelta))[0];
-  const biggestRankJump   = deltas.filter(d=>d.rankChange>0).sort((a,b)=>b.rankChange-a.rankChange)[0];
-  const newEntrants       = NEW_PROCESSED.filter(n=>!CURRENT_DATA.find(c=>c.id===n.id));
-
-  const totalNewVol   = NEW_PROCESSED.reduce((s,b)=>s+(b.volume||0),0);
-  const totalPriorVol = CURRENT_DATA.reduce((s,b)=>s+b.volume,0);
-  const totalDeltaPct = ((totalNewVol - totalPriorVol)/totalPriorVol*100).toFixed(1);
-
-  // Headline
-  const headline = STORY_OVERRIDE ||
-    (biggestVolMover ? `${biggestVolMover.name} ${biggestVolMover.volDelta>0?'surges':'slides'} ${Math.abs(biggestVolMover.volDelta).toFixed(1)}B in volume — the biggest mover in the 2026 RealTrends rankings` : 'RealTrends 2026 brokerage rankings are live');
-  document.getElementById('storyHeadline').textContent = headline;
-
-  // Bullets
-  const bullets = [];
-  if (biggestVolMover) {
-    const pos = biggestVolMover.volDelta > 0;
-    bullets.push({ cls: pos?'positive':'negative', metric:'Biggest volume move', value:(pos?'+':'')+biggestVolMover.volDelta.toFixed(1)+'B', caption:`${biggestVolMover.name} — from $${CURRENT_DATA.find(c=>c.id===biggestVolMover.id)?.volume.toFixed(1)}B to $${biggestVolMover.volume.toFixed(1)}B` });
-  }
-  if (biggestSidesMover) {
-    const pos = biggestSidesMover.sidesDelta > 0;
-    bullets.push({ cls:pos?'positive':'negative', metric:'Biggest sides change', value:(pos?'+':'-')+(Math.abs(biggestSidesMover.sidesDelta)/1000).toFixed(0)+'K', caption:`${biggestSidesMover.name} — ${pos?'gained':'lost'} ${Math.abs(biggestSidesMover.sidesDelta).toLocaleString()} sides` });
-  }
-  if (totalDeltaPct) {
-    const pos = parseFloat(totalDeltaPct) >= 0;
-    bullets.push({ cls:pos?'positive':'negative', metric:'Combined volume change', value:(pos?'+':'')+totalDeltaPct+'%', caption:`Total production across tracked brokerages, year over year` });
-  }
-  if (biggestRankJump) {
-    bullets.push({ cls:'positive', metric:'Biggest rank jump', value:`+${biggestRankJump.rankChange}`, caption:`${biggestRankJump.name} climbed from #${biggestRankJump.priorRank} to #${biggestRankJump.newRank} by volume` });
-  }
-  if (newEntrants.length) {
-    bullets.push({ cls:'neutral', metric:'New entrants', value:newEntrants.length.toString(), caption:newEntrants.map(b=>b.name).join(', ')+' — new to the tracked list' });
-  }
-
-  document.getElementById('storyBullets').innerHTML = bullets.map(b=>
-    `<div class="story-bullet ${b.cls}"><div class="metric">${b.metric}</div><div class="value">${b.value}</div><div class="caption">${b.caption}</div></div>`
-  ).join('');
+  return d;
 }
-
-/* ═══════════════════════════════════════════════════════
-   CONTROL HANDLERS
-   ═══════════════════════════════════════════════════════ */
-function activeDataset() {
-  const base = (DATA_LIVE && yoyMode === 'prior') ? CURRENT_DATA : (DATA_LIVE ? NEW_PROCESSED : CURRENT_DATA);
-  return mergerMode ? buildPostMerger(base) : base;
-}
-
-function filtered() {
-  let d = activeDataset();
-  if (currentFilter === 'franchise')   d = d.filter(b=>b.type==='franchise');
-  if (currentFilter === 'independent') d = d.filter(b=>b.type!=='franchise');
-  return [...d].sort((a,b)=>METRIC_CFG[currentMetric].acc(b)-METRIC_CFG[currentMetric].acc(a));
-}
-
-function tableSorted() {
-  return [...filtered()].sort((a,b)=>{
+function sorted(d){ const c=MC[metric]; return [...d].filter(r=>c.acc(r)!=null).sort((a,b)=>sortAsc?c.acc(a)-c.acc(b):c.acc(b)-c.acc(a)); }
+function tsorted(d){
+  return [...d].filter(r=>r.volume||r.sides||r.agents).sort((a,b)=>{
     let av=a[sortKey],bv=b[sortKey];
     if(av==null)av=sortAsc?Infinity:-Infinity;
     if(bv==null)bv=sortAsc?Infinity:-Infinity;
@@ -627,233 +400,160 @@ function tableSorted() {
     return sortAsc?av-bv:bv-av;
   });
 }
+function bc(r){ return r.color; }
+function chip(r){ return r.type==='franchise'?'<span class="chip cf">franchise</span>':r.type==='merged'?'<span class="chip cm">merged</span>':'<span class="chip cb">brokerage</span>'; }
 
-function setView(v) {
-  currentView=v;
-  const btns=document.querySelectorAll('#viewSeg button');
-  const views=['chart','table','changes'];
-  btns.forEach((b,i)=>b.classList.toggle('active',views[i]===v));
-  document.getElementById('chartPanel').style.display   = v==='chart'?'':'none';
-  document.getElementById('tablePanel').style.display   = v==='table'?'':'none';
-  document.getElementById('changesPanel').style.display = v==='changes'?'':'none';
-  if(v==='changes') renderChanges();
-  else render();
-}
-
-function setMetric(m) {
-  currentMetric=m;
-  document.querySelectorAll('#metricSeg button').forEach((b,i)=>b.classList.toggle('active',['volume','sides','avgPrice','agents'][i]===m));
-  render();
-}
-
-function setFilter(f) {
-  currentFilter=f;
-  ['all','franchise','independent'].forEach(x=>document.getElementById('pill-'+x).classList.toggle('active',x===f));
-  const si=document.getElementById('scopeInfo');
-  si.innerHTML=SCOPE_NOTES[f];
-  si.classList.toggle('visible',f!=='all'||mergerMode);
-  render();
-}
-
-function toggleMerger(on) {
-  mergerMode=on;
-  document.getElementById('mergerLabel').textContent=on?'Post-merger (Jan 2026)':'Pre-merger (2024 data)';
-  document.getElementById('mergerCallout').classList.toggle('on',on);
-  const si=document.getElementById('scopeInfo');
-  if(on){si.innerHTML='<strong>Merger view:</strong> Compass + Anywhere row = arithmetic sum of 2024 RealTrends brokerage profiles. Agent count (~340K) is globally-reported "real estate professionals" — <strong>not comparable</strong> to "active licensed agents" for other rows.';si.classList.add('visible');}
-  else{si.innerHTML=SCOPE_NOTES[currentFilter];si.classList.toggle('visible',currentFilter!=='all');}
-  render();
-}
-
-function setYoy(mode) {
-  yoyMode=mode;
-  ['current','prior','delta'].forEach(x=>document.getElementById('yoy-'+x).classList.toggle('active',x===mode));
-  if(mode==='delta'){setView('changes');return;}
-  render();
-}
-
-function sortBy(k) {
-  if(sortKey===k)sortAsc=!sortAsc;else{sortKey=k;sortAsc=false;}
-  document.querySelectorAll('th[id^="th-"]').forEach(th=>{
-    th.classList.remove('sorted');
-    const a=th.querySelector('.arr');
-    if(a)a.textContent='↕';
+/* ══════════════════════════════════════════════════════════════ SETTERS */
+function setView(v){
+  view=v;
+  ['chart','table','yoy'].forEach(t=>{
+    document.getElementById('p'+t.charAt(0).toUpperCase()+t.slice(1)).style.display=v===t?'':'none';
+    const b=document.getElementById('vt-'+t);if(b)b.classList.toggle('on',v===t);
   });
+  document.querySelectorAll('#vSeg button').forEach((b,i)=>b.classList.toggle('on',['chart','table','yoy'][i]===v));
+  if(v==='chart')renderChart();
+  if(v==='table')renderTable();
+  if(v==='yoy')renderYoy();
+}
+function setMetric(m){
+  metric=m;
+  document.querySelectorAll('#mSeg button').forEach((b,i)=>b.classList.toggle('on',['volume','sides','avgPrice','agents'][i]===m));
+  if(view==='chart')renderChart(); if(view==='table')renderTable();
+}
+function setFilter(f){
+  filter=f;
+  document.querySelectorAll('#fSeg button').forEach((b,i)=>b.classList.toggle('on',['all','franchise','brokerage'][i]===f));
+  if(view==='chart')renderChart(); if(view==='table')renderTable(); if(view==='yoy')renderYoy();
+}
+function toggleMerger(){
+  merger=!merger;
+  document.getElementById('mergeBtn').classList.toggle('on',merger);
+  if(view==='chart')renderChart(); if(view==='table')renderTable(); if(view==='yoy')renderYoy();
+}
+function sb(k){
+  if(sortKey===k)sortAsc=!sortAsc;else{sortKey=k;sortAsc=false;}
+  document.querySelectorAll('th[id^="th-"]').forEach(th=>{th.classList.remove('srt');const a=th.querySelector('.arr');if(a)a.textContent='↕';});
   const th=document.getElementById('th-'+k);
-  if(th){th.classList.add('sorted');const a=th.querySelector('.arr');if(a)a.textContent=sortAsc?'↑':'↓';}
-  renderTable(tableSorted());
+  if(th){th.classList.add('srt');const a=th.querySelector('.arr');if(a)a.textContent=sortAsc?'↑':'↓';}
+  renderTable();
 }
 
-/* ═══════════════════════════════════════════════════════
-   RENDER
-   ═══════════════════════════════════════════════════════ */
-function render() {
-  const data=filtered();
-  renderStats(data);
-  if(currentView==='chart')renderChart(data);
-  else if(currentView==='table')renderTable(tableSorted());
-}
-
-function getYoYValue(b) {
-  if (!DATA_LIVE) return null;
-  const prior = CURRENT_DATA.find(c=>c.id===b.id);
-  if (!prior || !b.volume) return null;
-  return ((b.volume - prior.volume)/prior.volume*100);
-}
-
-function renderStats(data) {
-  const tv=data.reduce((s,b)=>s+(b.volume||0),0);
-  const ts=data.reduce((s,b)=>s+(b.sides||0),0);
-  const ta=data.reduce((s,b)=>s+(b.agents||0),0);
-  const topP=[...data].filter(b=>b.avgPrice).sort((a,b)=>b.avgPrice-a.avgPrice)[0];
-  const yearLabel=DATA_LIVE&&yoyMode!=='prior'?'2025':'2024';
-  document.getElementById('statsRow').innerHTML=`
-    <div class="stat-card hl"><div class="stat-label">Total volume shown</div><div class="stat-value">$${Math.round(tv)}B</div><div class="stat-sub">${data.length} firms · ${yearLabel} production</div></div>
-    <div class="stat-card"><div class="stat-label">Combined sides</div><div class="stat-value">${(ts/1000).toFixed(0)}K</div><div class="stat-sub">transaction sides</div></div>
-    <div class="stat-card"><div class="stat-label">Combined agents</div><div class="stat-value">${(ta/1000).toFixed(0)}K</div><div class="stat-sub">various definitions — see methodology</div></div>
-    <div class="stat-card"><div class="stat-label">Highest implied avg price</div><div class="stat-value">${topP?'$'+(topP.avgPrice/1000).toFixed(0)+'K':'—'}</div><div class="stat-sub">${topP?topP.name:'—'}</div></div>
-  `;
-}
-
-function renderChart(data) {
-  const cfg=METRIC_CFG[currentMetric];
-  const h=Math.max(300,data.length*46+70);
-  document.getElementById('chartWrap').style.height=h+'px';
-  const yearLabel=DATA_LIVE&&yoyMode==='prior'?'2024':'2025';
-  const rankLabel=DATA_LIVE?` · RealTrends Verified ${DATA_LIVE?'2026':'2025'}`:'· RealTrends Verified 2025';
-  document.getElementById('chartTitle').textContent=cfg.chartLabel+' by brokerage';
-  document.getElementById('chartNote').textContent=(DATA_LIVE?yearLabel+' production':' 2024 production')+rankLabel+(mergerMode?' · Merger view Jan 2026':'');
-  document.getElementById('legendRow').innerHTML=data.map(b=>`<span class="leg-item"><span class="leg-sq" style="background:${b.color}"></span>${b.name}${b.merged?'<span class="merged-badge">merged</span>':''}</span>`).join('');
-
-  const isDark=matchMedia('(prefers-color-scheme:dark)').matches;
-  const gridC=isDark?'rgba(255,255,255,.07)':'rgba(0,0,0,.05)';
-  const textC=isDark?'#999':'#888';
-
-  if(chartInst){chartInst.destroy();chartInst=null;}
-  chartInst=new Chart(document.getElementById('mainChart'),{
+/* ══════════════════════════════════════════════════════════════ CHART */
+function renderChart(){
+  const cfg=MC[metric], d=sorted(rows());
+  const h=Math.max(320,d.length*52+70);
+  document.getElementById('cWrap').style.height=h+'px';
+  document.getElementById('cTitle').textContent=cfg.label+' — 2025 production';
+  const hasFran=d.some(r=>r.type==='franchise'), hasBrok=d.some(r=>r.type==='brokerage'||r.type==='merged');
+  document.getElementById('cNote').textContent=hasFran&&hasBrok?'Franchise networks (green) aggregate all affiliated offices — different scope to single brokerages (blue)':hasFran?'Franchise networks aggregate all affiliated offices':'Single brokerages — one licensed entity each';
+  const dk=matchMedia('(prefers-color-scheme:dark)').matches;
+  if(mainChart){mainChart.destroy();mainChart=null;}
+  mainChart=new Chart(document.getElementById('mainC'),{
     type:'bar',
-    data:{
-      labels:data.map(b=>b.name),
-      datasets:[{
-        data:data.map(b=>cfg.acc(b)),
-        backgroundColor:data.map(b=>b.merged?b.color:b.color+'cc'),
-        borderWidth:0,borderRadius:2,barThickness:24,
-      }]
-    },
+    data:{labels:d.map(r=>r.name),datasets:[{
+      data:d.map(r=>cfg.acc(r)||0),
+      backgroundColor:d.map(r=>bc(r)+'cc'),
+      hoverBackgroundColor:d.map(r=>bc(r)),
+      borderWidth:0,borderRadius:3,barThickness:26,
+    }]},
     options:{
       indexAxis:'y',responsive:true,maintainAspectRatio:false,
-      plugins:{legend:{display:false},tooltip:{callbacks:{label:ctx=>'  '+cfg.fmt(ctx.raw)}}},
+      plugins:{legend:{display:false},tooltip:{callbacks:{
+        label:ctx=>'  '+cfg.fmt(ctx.raw),
+        afterLabel:ctx=>{
+          const r=d[ctx.dataIndex];if(!r)return'';
+          const tl=r.type==='franchise'?'Franchise network':r.type==='merged'?'Post-merger combined':'Single brokerage';
+          const yoy=r.yoy!=null?' · YoY: '+(r.yoy>=0?'+':'')+r.yoy.toFixed(1)+'%':'';
+          return '  '+tl+' · '+r.srcLabel+yoy;
+        }
+      }}},
       scales:{
-        x:{grid:{color:gridC},ticks:{color:textC,font:{size:11},callback:v=>cfg.tick(v)},border:{display:false}},
-        y:{grid:{display:false},ticks:{color:textC,font:{size:12},autoSkip:false},border:{display:false}}
-      },
-      layout:{padding:{right:24,top:4}}
+        x:{grid:{color:dk?'rgba(255,255,255,.06)':'rgba(0,0,0,.05)'},ticks:{color:dk?'#888':'#777',font:{size:11},callback:v=>cfg.tick(v)},border:{display:false}},
+        y:{grid:{display:false},ticks:{
+          color:ctx=>{const r=d[ctx.index];if(!r)return'#777';return r.type==='franchise'?(dk?'#5DCAA5':'#0F6E56'):r.type==='merged'?(dk?'#f88':'#9b1d1d'):(dk?'#90caf9':'#185FA5');},
+          font:ctx=>{const r=d[ctx.index];return{size:12,weight:r&&r.type==='franchise'?'500':'400'};},
+          autoSkip:false,
+        },border:{display:false}}
+      },layout:{padding:{right:24,top:4}}
+    }
+  });
+  document.getElementById('cFoot').innerHTML=[FN_RT,FN_T3,FN_ARE,metric==='avgPrice'?FN_AVG:'',FN_SCOPE].filter(Boolean).join(' &nbsp; ');
+}
+
+/* ══════════════════════════════════════════════════════════════ TABLE */
+function renderTable(){
+  const d=tsorted(rows());
+  const mv=Math.max(...d.map(r=>r.volume||0));
+  document.getElementById('tbody').innerHTML=d.map((r,i)=>{
+    r.avgPrice=(r.volume&&r.sides)?Math.round((r.volume*1e9)/(r.sides/2)):null;
+    r.yoy=(r.volume&&r.vol24)?((r.volume-r.vol24)/r.vol24*100):null;
+    const pct=((r.volume||0)/mv*100).toFixed(0);
+    const yoyStr=r.yoy!=null?`<span class="${r.yoy>=0?'gp':'gn'}">${r.yoy>=0?'+':''}${r.yoy.toFixed(1)}%</span>`:`<span class="ga">—</span>`;
+    const tp=r.src?`<span class="tip" title="${r.src.replace(/"/g,"'")}">?</span>`:'';
+    const trC=r.type==='merged'?' class="mr"':'';
+    return `<tr${trC}>
+      <td class="rn">${i+1}</td>
+      <td><div class="nc"><span class="dot" style="background:${bc(r)}"></span><span class="bn">${r.name}</span>${chip(r)}${tp}</div></td>
+      <td style="font-size:11px;color:var(--g4)">${r.type==='franchise'?'Franchise':'Brokerage'}</td>
+      <td><div class="bw"><div class="bt"><div class="bf" style="width:${pct}%;background:${bc(r)}"></div></div><span class="nm">${r.volume?'$'+r.volume.toFixed(2)+'B':'—'}</span></div></td>
+      <td class="nm">${r.sides?r.sides.toLocaleString():'—'}</td>
+      <td class="nm">${r.avgPrice?'$'+(r.avgPrice/1000).toFixed(0)+'K':'—'}</td>
+      <td class="nm">${r.agents?(r.agents>=1000?(r.agents/1000).toFixed(0)+'K':r.agents):'—'}</td>
+      <td>${yoyStr}</td>
+    </tr>`;
+  }).join('');
+  document.getElementById('tFoot').innerHTML=`${FN_RT} &nbsp; ${FN_T3} &nbsp; ${FN_ARE} &nbsp; ${FN_AVG} &nbsp; ${FN_SCOPE} &nbsp; <strong>Hover the ? icon</strong> on each row for full source and methodology notes.`;
+}
+
+/* ══════════════════════════════════════════════════════════════ YOY */
+function renderYoy(){
+  const d=rows().filter(r=>r.volume&&r.vol24).map(r=>({...r,
+    volD:+(r.volume-r.vol24).toFixed(2),
+    volP:(r.volume-r.vol24)/r.vol24*100,
+  }));
+  if(!d.length){document.getElementById('yHL').textContent='No year-over-year data available for current filter.';document.getElementById('yBL').innerHTML='';document.getElementById('movers').innerHTML='';return;}
+  const byP=[...d].sort((a,b)=>Math.abs(b.volP)-Math.abs(a.volP));
+  const leader=byP[0];
+  const bigD=[...d].sort((a,b)=>Math.abs(b.volD)-Math.abs(a.volD))[0];
+  document.getElementById('yHL').textContent=leader.name+' leads YoY growth at '+(leader.volP>=0?'+':'')+leader.volP.toFixed(1)+'% — the standout mover in the 2026 rankings';
+  const buls=[];
+  buls.push(`<strong>${leader.name}</strong> added $${Math.abs(leader.volD).toFixed(1)}B — ${leader.volP>=0?'up':'down'} ${Math.abs(leader.volP).toFixed(1)}% year over year`);
+  if(bigD.id!==leader.id) buls.push(`<strong>${bigD.name}</strong> had the largest absolute dollar gain at +$${bigD.volD.toFixed(1)}B`);
+  const dec=d.filter(r=>r.volP<0);
+  if(dec.length) buls.push(`${dec.length===1?'Only decliner:':'Decliners:'} ${dec.map(r=>r.name).join(', ')}`);
+  document.getElementById('yBL').innerHTML=buls.map(b=>`<div class="yoy-b">${b}</div>`).join('');
+  const gain=[...d].filter(r=>r.volP>0).sort((a,b)=>b.volP-a.volP).slice(0,4);
+  const decl=[...d].filter(r=>r.volP<0).sort((a,b)=>a.volP-b.volP).slice(0,4);
+  const dol=[...d].sort((a,b)=>b.volD-a.volD).slice(0,4);
+  function mc(title,items,vfn,cls){
+    if(!items.length)return'';
+    return`<div class="mc"><h4>${title}</h4>${items.map(r=>`<div class="mr2"><span class="mn">${r.name}</span><span class="${cls}">${vfn(r)}</span></div>`).join('')}</div>`;
+  }
+  document.getElementById('movers').innerHTML=mc('Biggest % gainers',gain,r=>`+${r.volP.toFixed(1)}%`,'mv-p')+(decl.length?mc('Declines',decl,r=>`${r.volP.toFixed(1)}%`,'mv-n'):'')+mc('Biggest $ gains',dol,r=>`+$${r.volD.toFixed(1)}B`,'mv-p');
+  const ds=[...d].sort((a,b)=>b.volP-a.volP);
+  const h=Math.max(200,ds.length*44+60);
+  document.getElementById('yWrap').style.height=h+'px';
+  const dk=matchMedia('(prefers-color-scheme:dark)').matches;
+  if(yoyChart){yoyChart.destroy();yoyChart=null;}
+  yoyChart=new Chart(document.getElementById('yoyC'),{
+    type:'bar',
+    data:{labels:ds.map(r=>r.name),datasets:[{
+      data:ds.map(r=>+r.volP.toFixed(1)),
+      backgroundColor:ds.map(r=>r.volP>=0?'#1a6b3acc':'#a01717cc'),
+      borderWidth:0,borderRadius:3,barThickness:22,
+    }]},
+    options:{
+      indexAxis:'y',responsive:true,maintainAspectRatio:false,
+      plugins:{legend:{display:false},tooltip:{callbacks:{label:ctx=>ctx.raw.toFixed(1)+'%'}}},
+      scales:{
+        x:{grid:{color:dk?'rgba(255,255,255,.05)':'rgba(0,0,0,.05)'},ticks:{color:dk?'#888':'#777',font:{size:11},callback:v=>v+'%'},border:{display:false}},
+        y:{grid:{display:false},ticks:{color:dk?'#888':'#777',font:{size:11},autoSkip:false},border:{display:false}}
+      },layout:{padding:{right:16,top:4}}
     }
   });
 }
 
-function renderTable(data) {
-  const mv=Math.max(...data.map(b=>b.volume||0));
-  const ms=Math.max(...data.map(b=>b.sides||0));
-  const ma=Math.max(...data.map(b=>b.agents||0));
-  const showYoy=DATA_LIVE&&yoyMode==='current';
-
-  document.getElementById('tableNote').textContent=DATA_LIVE&&yoyMode==='prior'?'2024 production · RealTrends Verified 2025':'2025 production · RealTrends Verified 2026';
-
-  document.getElementById('tableBody').innerHTML=data.map((b,i)=>{
-    const vp=(b.volume/mv*100||0).toFixed(0);
-    const sp=(b.sides/ms*100||0).toFixed(0);
-    const ap=(b.agents/ma*100||0).toFixed(0);
-    const g=b.growth5yr!=null?`<span class="${b.growth5yr>=0?'g-pos':'g-neg'}">${b.growth5yr>=0?'+':''}${b.growth5yr.toFixed(1)}%</span>`:`<span class="g-na">—</span>`;
-    const typeCls=b.type==='merged'?'t-merged':b.type==='franchise'?'t-franchise':'t-independent';
-    const agBadge=b.agentVerified?'<span class="q-verified">RT verified</span>':'<span class="q-estimated">estimated</span>';
-    const tip=b.note?`<span class="tip" title="${b.note.replace(/"/g,"'")}">?</span>`:'';
-
-    let yoyCell='';
-    if(showYoy){
-      const pct=getYoYValue(b);
-      if(pct!==null){
-        const cls=pct>0?'yoy-pos':pct<0?'yoy-neg':'yoy-flat';
-        yoyCell=`<td class="yoy-cell"><span class="${cls} yoy-arrow">${pct>0?'▲':'▼'}</span><span class="${cls}">${pct>0?'+':''}${pct.toFixed(1)}%</span></td>`;
-      } else {yoyCell='<td class="g-na">—</td>';}
-    }
-
-    return `<tr>
-      <td class="rank-n">${i+1}</td>
-      <td><div class="name-cell"><span class="color-dot" style="background:${b.color}"></span><span class="b-name">${b.name}</span>${b.merged?'<span class="merged-badge">Jan 2026</span>':''}${tip}</div></td>
-      <td><span class="type-tag ${typeCls}">${b.type==='merged'?'merged':b.type}</span></td>
-      <td><div class="bar-wrap"><div class="bar-track"><div class="bar-fill" style="width:${vp}%;background:${b.color}"></div></div><span class="num">$${(b.volume||0).toFixed(2)}B</span></div></td>
-      <td><div class="bar-wrap"><div class="bar-track"><div class="bar-fill" style="width:${sp}%;background:${b.color}88"></div></div><span class="num">${(b.sides||0).toLocaleString()}</span></div></td>
-      <td class="num">${b.avgPrice?'$'+(b.avgPrice/1000).toFixed(0)+'K':'—'}</td>
-      <td><div class="bar-wrap"><div class="bar-track"><div class="bar-fill" style="width:${ap}%;background:${b.color}55"></div></div><span class="num">${((b.agents||0)/1000).toFixed(0)}K ${agBadge}</span></div></td>
-      <td>${g}</td>
-      ${showYoy?yoyCell:''}
-    </tr>`;
-  }).join('');
-}
-
-function renderChanges() {
-  if(!DATA_LIVE||!NEW_PROCESSED.length){
-    document.getElementById('changesContent').innerHTML='<p style="padding:20px;color:var(--gray-500);font-size:14px">Year-over-year comparison will be available when the April 10, 2026 RealTrends data is loaded.</p>';
-    return;
-  }
-
-  const rows=NEW_PROCESSED.map(n=>{
-    const prior=CURRENT_DATA.find(c=>c.id===n.id);
-    const priorRankVol=[...CURRENT_DATA].sort((a,b)=>b.volume-a.volume).findIndex(b=>b.id===n.id)+1;
-    const newRankVol=[...NEW_PROCESSED].sort((a,b)=>b.volume-a.volume).findIndex(b=>b.id===n.id)+1;
-    return {
-      ...n, prior,
-      volDelta: prior&&n.volume ? n.volume-prior.volume : null,
-      sidesDelta: prior&&n.sides ? n.sides-prior.sides : null,
-      priorRankVol, newRankVol,
-      rankChange: priorRankVol-newRankVol,
-      isNew: !prior
-    };
-  }).sort((a,b)=>(b.newRankVol>0?b.newRankVol:999)-(a.newRankVol>0?a.newRankVol:999)).sort((a,b)=>a.newRankVol-b.newRankVol);
-
-  const tableHtml=`
-    <table>
-      <thead><tr>
-        <th>Rank (vol)</th>
-        <th>Brokerage</th>
-        <th>2025 volume</th>
-        <th>vs 2024</th>
-        <th>2025 sides</th>
-        <th>vs 2024</th>
-        <th>Rank change</th>
-      </tr></thead>
-      <tbody>
-        ${rows.map(r=>{
-          const vFmt=v=>v!=null?'$'+v.toFixed(2)+'B':'—';
-          const sFmt=v=>v!=null?v.toLocaleString():'—';
-          const dVol=r.volDelta!=null?`<span class="${r.volDelta>=0?'yoy-pos':'yoy-neg'}">${r.volDelta>=0?'+':''}${r.volDelta.toFixed(1)}B</span>`:'—';
-          const dSides=r.sidesDelta!=null?`<span class="${r.sidesDelta>=0?'yoy-pos':'yoy-neg'}">${r.sidesDelta>=0?'+':''}${r.sidesDelta.toLocaleString()}</span>`:'—';
-          let rankEl;
-          if(r.isNew)rankEl='<span class="rank-new">NEW</span>';
-          else if(r.rankChange>0)rankEl=`<span class="rank-change rank-up">▲${r.rankChange}</span>`;
-          else if(r.rankChange<0)rankEl=`<span class="rank-change rank-down">▼${Math.abs(r.rankChange)}</span>`;
-          else rankEl=`<span class="rank-same">—</span>`;
-          return `<tr>
-            <td class="rank-n">#${r.newRankVol}</td>
-            <td><div class="name-cell"><span class="color-dot" style="background:${r.color}"></span><span class="b-name">${r.name}</span>${r.merged?'<span class="merged-badge">merged</span>':''}</div></td>
-            <td class="num">${vFmt(r.volume)}</td>
-            <td>${dVol}</td>
-            <td class="num">${sFmt(r.sides)}</td>
-            <td>${dSides}</td>
-            <td>${rankEl}</td>
-          </tr>`;
-        }).join('')}
-      </tbody>
-    </table>`;
-  document.getElementById('changesContent').innerHTML=tableHtml;
-}
-
-/* ═══════════════════════════════════════════════════════
-   BOOT
-   ═══════════════════════════════════════════════════════ */
-initUI();
-render();
+setView('chart');
 </script>
 </body>
 </html>

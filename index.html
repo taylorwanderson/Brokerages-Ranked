@@ -144,7 +144,7 @@ tbody tr:hover td{background:var(--g1)}
     <div class="cg" style="margin-left:auto">
       <span class="cl">Pro-forma view</span>
       <button class="tbtn" id="mergeBtn" onclick="toggleMerger()">
-        <span class="tdot"></span>Compass + Anywhere combined
+        <span class="tdot"></span>Show Compass + Anywhere pro-forma
       </button>
     </div>
   </div>
@@ -192,7 +192,7 @@ tbody tr:hover td{background:var(--g1)}
       </div>
     </div>
     <div class="fn">
-      <strong>Source:</strong> <a href="https://www.realestatealmanac.com/enterprises" target="_blank">T3 Sixty 2026 Real Estate Almanac · Enterprise 20</a> (April 8, 2026). Used with permission. Volume in millions USD. <sup>*</sup> Company provided partial data; T3 Sixty supplemented with additional research — estimates may differ from actual. <sup>**</sup> Compass 2025 totals include Christie's International Real Estate owned operations; CIRE independent affiliates only — prior-year comparison not directly equivalent. <strong>Implied avg price</strong> = Volume ÷ Sides (value represented per side). Confirmed against RealTrends Verified reported avg home prices. Derived estimate, not audited.
+      <strong>Source:</strong> <a href="https://www.realestatealmanac.com/enterprises" target="_blank">T3 Sixty 2026 Real Estate Almanac · Enterprise 20</a> (April 8, 2026). Used with permission. Volume in millions USD. All figures reflect the 2025 calendar year (January 1 – December 31, 2025); YoY compares to the 2024 calendar year. Agent counts are U.S.-based figures per T3 Sixty. <sup>*</sup> Weichert: partial data supplemented by T3 Sixty research — estimates may differ from actual. <sup>**</sup> Compass: 2025 totals include all company-owned operations including Christie's International Real Estate (owned affiliates) and brokerages acquired during 2025 (@properties, PorchLight, Ansley, Cottingham Chalk, Colorado Homes Realty, Washington Fine Properties) — prior-year comparison not directly equivalent. <strong>Implied avg price</strong> = Volume ÷ Sides. Derived estimate, not audited. <sup>★</sup> Pro-forma: 2025 pre-merger production summed — not an audited combined filing.
     </div>
   </div>
 
@@ -210,8 +210,8 @@ tbody tr:hover td{background:var(--g1)}
       </div>
       <div style="position:relative;padding:12px 16px 10px" id="yWrap"><canvas id="yoyC"></canvas></div>
     </div>
-    <div class="fn">
-      <strong>Year-over-year:</strong> 2025 vs 2024 production as reported in the T3 Sixty 2026 Real Estate Almanac (April 8, 2026). Used with permission. <sup>**</sup> Compass YoY comparison not directly equivalent due to Christie's International Real Estate methodology change.
+    <div class="fn" id="yoyFn">
+      <strong>Year-over-year:</strong> Compares 2025 production (calendar year January 1 – December 31, 2025) to 2024 production (calendar year January 1 – December 31, 2024), as reported in the <a href="https://www.realestatealmanac.com/enterprises" target="_blank">T3 Sixty 2026 Real Estate Almanac</a> (April 8, 2026). Used with permission. <sup>**</sup> Compass YoY not directly equivalent — see Compass footnote in methodology.
     </div>
   </div>
 
@@ -220,29 +220,29 @@ tbody tr:hover td{background:var(--g1)}
 
     <div class="meth-section">
       <h4>Primary Source</h4>
-      <p>All enterprise data is drawn from the <a href="https://www.realestatealmanac.com/enterprises" target="_blank">T3 Sixty 2026 Real Estate Almanac · Enterprise 20</a>, published April 8, 2026, and used with permission of T3 Sixty. Figures reflect 2025 full-year production. Direct table sources: <a href="https://www.realestatealmanac.com/enterprises/by-sales-volume" target="_blank">by sales volume</a> and <a href="https://www.realestatealmanac.com/enterprises/by-transaction-sides" target="_blank">by transaction sides</a>. T3 Sixty methodology is documented at <a href="https://www.realestatealmanac.com/methodology" target="_blank">realestatealmanac.com/methodology</a>.</p>
+      <p>All enterprise data is drawn from the <a href="https://www.realestatealmanac.com/enterprises" target="_blank">T3 Sixty 2026 Real Estate Almanac · Enterprise 20</a>, published April 8, 2026, and used with permission of T3 Sixty. Figures reflect the 2025 full calendar year (January 1 – December 31, 2025). Direct table sources: <a href="https://www.realestatealmanac.com/enterprises/by-sales-volume" target="_blank">enterprises by sales volume</a> and <a href="https://www.realestatealmanac.com/enterprises/by-transaction-sides" target="_blank">enterprises by transaction sides</a>. T3 Sixty's full data methodology is documented at <a href="https://www.realestatealmanac.com/methodology" target="_blank">realestatealmanac.com/methodology</a>. T3 Sixty collects data across approximately 2,500 brokerages and 12,000 data points annually via surveys, franchise reporting, MLS data, public financial statements, and other sources; it strives to verify data but cannot guarantee 100% accuracy or completeness.</p>
     </div>
 
     <div class="meth-section">
       <h4>What is an enterprise?</h4>
-      <p>T3 Sixty defines an enterprise as a holding company or franchisor that owns a controlling stake (greater than 50%) in one or more brokerage brands. Enterprise figures combine both owned brokerage production and franchised affiliate production under one corporate umbrella. This means enterprise totals are larger than standalone brokerage figures — for example, Anywhere Real Estate's $557.6B includes its owned Anywhere Advisors brokerage plus all Coldwell Banker, Sotheby's International Realty, Century 21, ERA, Better Homes &amp; Gardens Real Estate, and Corcoran franchise affiliate production.</p>
+      <p>T3 Sixty defines an enterprise as a holding company or franchisor that owns a controlling stake (greater than 50%) in one or more brokerage brands. Enterprise figures combine both owned brokerage production and franchised affiliate production under one corporate umbrella — making this a consistent, apples-to-apples comparison across all companies. Enterprise totals are larger than standalone brokerage figures: for example, Anywhere Real Estate's $557.6B includes its owned Anywhere Advisors brokerage plus all Coldwell Banker, Sotheby's International Realty, Century 21, ERA, Better Homes &amp; Gardens Real Estate, and Corcoran franchise affiliate production. Readers should not compare these enterprise figures directly to single-brokerage data from other sources.</p>
     </div>
 
     <div class="meth-section">
-      <h4>Sales volume and transaction sides</h4>
-      <p>T3 Sixty counts the value or number of homes a company represented on either the buy or sell side. If a company represents both sides of the same transaction, it counts as two sides. A nominal amount of commercial activity may be included without materially affecting rankings. All agent counts are U.S.-based figures as reported by T3 Sixty.</p>
+      <h4>Sales volume, transaction sides, and agent count</h4>
+      <p>T3 Sixty counts the value or number of homes a company represented on either the buy or sell side. If a company represents both sides of the same transaction, it counts as two sides and the full value is counted twice. A nominal amount of commercial activity may be included without materially affecting rankings. All agent counts in this visualization are U.S.-based figures as reported by T3 Sixty, consistent across all rows. Year-over-year figures compare 2025 production (calendar year) to 2024 production (calendar year), as reported in the same Almanac.</p>
     </div>
 
     <div class="meth-section">
       <h4>Implied average price</h4>
-      <p>Derived as Volume ÷ Sides. Because both T3 Sixty and RealTrends count each representation separately — a dual-represented sale equals two sides — dividing volume by sides yields the average value per side, which closely tracks average home price. This is a derived estimate confirmed against <a href="https://www.realtrends.com/ranking/best-real-estate-agents-united-states/brokerages-by-volume/" target="_blank">RealTrends Verified</a> reported average home price fields (e.g., Compass: $262.23B ÷ 245,173 sides = $1.07M, an exact match). Not an audited statistic.</p>
+      <p>Derived as Volume ÷ Sides. Because T3 Sixty counts each representation separately — a dual-represented sale equals two sides — dividing volume by sides yields the average value per side, which closely tracks average home price. This formula is verified against <a href="https://www.realtrends.com/ranking/best-real-estate-agents-united-states/brokerages-by-volume/" target="_blank">RealTrends Verified</a> brokerage profile "Average Home Price" fields: for example, Compass $262.23B ÷ 245,173 sides = $1.07M, an exact match to the RealTrends-reported figure. This is a derived estimate, not an audited statistic. It is not shown for the pro-forma merged row, where the blended average is less meaningful.</p>
     </div>
 
     <div class="meth-section">
       <h4>Footnotes</h4>
-      <p><sup>*</sup> <strong>Weichert Family of Companies</strong> provided partial data; T3 Sixty supplemented with additional research. Figures are estimates and may differ from actuals.<br>
-      <sup>**</sup> <strong>Compass</strong> 2025 totals include all company-owned brokerage operations including those affiliated with Christie's International Real Estate (CIRE). CIRE prior-year totals included both owned and affiliated brokerages, making year-over-year comparison not directly equivalent.<br>
-      <sup>★</sup> <strong>Compass International Holdings (pro-forma)</strong>: the merger toggle combines Compass and Anywhere Real Estate using arithmetic sums of their T3 Sixty Enterprise 20 figures — volume $852.2B, sides 1,212,401, agents 215,486 (all U.S., per T3 Sixty). Merger closed January 9, 2026 per <a href="https://www.prnewswire.com/news-releases/compass-and-anywhere-real-estate-begin-a-new-chapter-as-one-company-built-for-real-estate-professionals-302657055.html" target="_blank">Compass press release</a> and <a href="https://www.sec.gov/Archives/edgar/data/1563190/000156319026000019/comp-20260109.htm" target="_blank">SEC Form 8-K</a>. Not an audited combined filing. YoY not shown.</p>
+      <p><sup>*</sup> <strong>Weichert Family of Companies</strong> provided partial data to T3 Sixty; figures were supplemented with additional research and are estimates that may differ from actuals.</p>
+      <p><sup>**</sup> <strong>Compass</strong> 2025 totals include all company-owned brokerage operations, including those affiliated with Christie's International Real Estate (CIRE — owned affiliates only) and brokerages acquired by Compass during 2025: @properties, Ansley, Cottingham Chalk, PorchLight, Colorado Homes Realty, and Washington Fine Properties. Because prior-year CIRE totals included both owned and affiliated brokerages, year-over-year comparisons for Compass are not directly equivalent.</p>
+      <p><sup>★</sup> <strong>Compass International Holdings (pro-forma)</strong> — when the pro-forma toggle is enabled, the Compass and Anywhere Real Estate rows are replaced by their arithmetic sum using T3 Sixty Enterprise 20 U.S. figures: volume $852.2B ($557.6B + $294.6B), sides 1,212,401 (935,344 + 277,057), agents 215,486 (172,228 + 43,258). This is a 2025 pre-merger production sum — it is not an audited combined-company filing. Year-over-year is not shown for this row as the two entities had separate pre-merger trajectories. Merger closed January 9, 2026 per <a href="https://www.prnewswire.com/news-releases/compass-and-anywhere-real-estate-begin-a-new-chapter-as-one-company-built-for-real-estate-professionals-302657055.html" target="_blank">Compass press release</a> and <a href="https://www.sec.gov/Archives/edgar/data/1563190/000156319026000019/comp-20260109.htm" target="_blank">SEC Form 8-K filed January 9, 2026</a>.</p>
     </div>
   </div>
 
@@ -394,7 +394,7 @@ function yoySpan(v, suffix='%') {
   return `<span class="${v >= 0 ? 'yp' : 'yn'}">${v >= 0 ? '+' : ''}${v.toFixed(1)}${suffix}</span>`;
 }
 
-const FN = `<strong>Source:</strong> <a href="https://www.realestatealmanac.com/enterprises" target="_blank">T3 Sixty 2026 Real Estate Almanac · Enterprise 20</a> (April 8, 2026). Used with permission. Enterprise figures combine owned and franchised office production under one corporate umbrella. Volume in millions USD. <sup>*</sup> Weichert: partial data supplemented by T3 Sixty research. <sup>**</sup> Compass: Christie's International Real Estate methodology change affects YoY comparability.`;
+const FN = `<strong>Source:</strong> <a href="https://www.realestatealmanac.com/enterprises" target="_blank">T3 Sixty 2026 Real Estate Almanac · Enterprise 20</a> (April 8, 2026). Used with permission. All figures reflect the 2025 calendar year (January 1 – December 31, 2025). Enterprise figures combine owned and franchised office production under one corporate umbrella. Agent counts are U.S.-based per T3 Sixty. <sup>*</sup> Weichert: partial data, T3 Sixty supplemented — estimates may differ from actual. <sup>**</sup> Compass: 2025 totals include Christie's International Real Estate (owned affiliates) and brokerages acquired during 2025 (@properties, PorchLight, Ansley, Cottingham Chalk, Colorado Homes Realty, Washington Fine Properties) — YoY not directly equivalent.`;
 
 /* ═══════════════ SETTERS */
 function setView(v) {
@@ -489,7 +489,7 @@ function renderChart() {
   });
 
   const mergerFN = merger
-    ? ' <strong>★ Pro-forma:</strong> Compass International Holdings = arithmetic sum of T3 Sixty 2026 Enterprise 20 US figures for Compass ($294.6B / 277,057 sides) + Anywhere Real Estate ($557.6B / 935,344 sides). Agent count ~340,000 is global (Compass IR press release, Jan 9 2026) — not comparable to the US-only figures for other rows. Merger closed January 9, 2026. Not an audited combined filing.'
+    ? ' <strong>★ Pro-forma:</strong> Compass International Holdings = arithmetic sum of T3 Sixty 2026 Enterprise 20 U.S. figures: Compass ($294.6B / 277,057 sides / 43,258 agents) + Anywhere Real Estate ($557.6B / 935,344 sides / 172,228 agents). All figures U.S.-only, consistent with all other rows. Merger closed January 9, 2026. Not an audited combined filing.'
     : '';
   document.getElementById('cFoot').innerHTML = FN + mergerFN;
 }

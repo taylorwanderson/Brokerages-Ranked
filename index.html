@@ -561,6 +561,24 @@ function renderYoy() {
 }
 
 setView('chart');
+
+/* ── AUTO-RESIZE: report document height to parent iframe ── */
+function reportHeight() {
+  const h = document.documentElement.scrollHeight;
+  window.parent.postMessage({ height: h }, '*');
+}
+/* Report after charts animate (Chart.js animates over ~400ms by default) */
+function reportHeightDelayed() { setTimeout(reportHeight, 500); }
+/* Patch each setter to report height after render */
+const _setView = setView;
+window.setView = function(v) { _setView(v); reportHeightDelayed(); };
+const _setMetric = setMetric;
+window.setMetric = function(m) { _setMetric(m); reportHeightDelayed(); };
+const _toggleMerger = toggleMerger;
+window.toggleMerger = function() { _toggleMerger(); reportHeightDelayed(); };
+/* Also report on load and resize */
+window.addEventListener('load', reportHeightDelayed);
+window.addEventListener('resize', reportHeight);
 </script>
 </body>
 </html>

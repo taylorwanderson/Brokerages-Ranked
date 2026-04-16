@@ -393,7 +393,7 @@ function sb(k) {
 function renderChart() {
   const cfg = MC[metric];
   const d = activeData();
-  const h = Math.max(380, d.length * 44 + 70);
+  const h = Math.max(420, d.length * 52 + 80);
   document.getElementById('cWrap').style.height = h + 'px';
   const mergerLabel = merger ? ' — pro-forma combined view' : '';
   document.getElementById('cTitle').textContent = cfg.label + ' — 2025 enterprise production' + mergerLabel;
@@ -529,7 +529,7 @@ function renderYoy() {
     mCard('Biggest gainers', gainers, r => '+' + cfg.yoyAcc(r).toFixed(1) + '%', 'mv-p') +
     (decl.length ? mCard('Declines', decl, r => cfg.yoyAcc(r).toFixed(1) + '%', 'mv-n') : '');
 
-  const h = Math.max(220, d.length * 38 + 60);
+  const h = Math.max(240, d.length * 46 + 60);
   const mergerNote = merger
     ? '<strong>Note:</strong> The pro-forma Compass International Holdings row is excluded from this view — the two entities had separate pre-merger growth trajectories and a combined YoY is not meaningful. Toggle off the pro-forma view to compare Compass and Anywhere Real Estate individually.'
     : '';
@@ -562,23 +562,18 @@ function renderYoy() {
 
 setView('chart');
 
-/* ── AUTO-RESIZE: report document height to parent iframe ── */
+/* ── AUTO-RESIZE: report true document height to parent iframe ── */
 function reportHeight() {
-  const h = document.documentElement.scrollHeight;
-  window.parent.postMessage({ height: h }, '*');
+  window.parent.postMessage({ height: document.body.scrollHeight }, '*');
 }
-/* Report after charts animate (Chart.js animates over ~400ms by default) */
-function reportHeightDelayed() { setTimeout(reportHeight, 500); }
-/* Patch each setter to report height after render */
-const _setView = setView;
-window.setView = function(v) { _setView(v); reportHeightDelayed(); };
-const _setMetric = setMetric;
-window.setMetric = function(m) { _setMetric(m); reportHeightDelayed(); };
-const _toggleMerger = toggleMerger;
-window.toggleMerger = function() { _toggleMerger(); reportHeightDelayed(); };
-/* Also report on load and resize */
-window.addEventListener('load', reportHeightDelayed);
-window.addEventListener('resize', reportHeight);
+if (window.ResizeObserver) {
+  new ResizeObserver(reportHeight).observe(document.body);
+} else {
+  /* Fallback for older browsers */
+  window.addEventListener('load', reportHeight);
+  window.addEventListener('resize', reportHeight);
+  setInterval(reportHeight, 600);
+}
 </script>
 </body>
 </html>
